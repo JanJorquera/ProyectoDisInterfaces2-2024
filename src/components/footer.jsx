@@ -8,8 +8,11 @@ import Whatsapp from '../assets/whatsapp.png';
 import UTFSM from '../assets/UTFSM.png';
 
 export const Footer = () => {
+    const com = '.com'
+    const cl = '.cl'
+
     const redirect = (path, domain)=>{
-        window.location.href = `https://www.${path}.${domain}`;
+        window.location.href = `https://${path}${domain}`;
     }
 
     return (
@@ -50,17 +53,17 @@ export const Footer = () => {
                 <div className='footer__subelement'>Redes Sociales</div>
                 <div className='footer__imgcontainer'>
                     <div className='footer__imgcontainer footer__imgcontainer--inside'>
-                        <img onClick={()=>redirect('facebook', 'com')} className='footer__image' src={Facebook} />
-                        <img onClick={()=>redirect('web.whatsapp', 'com')} className='footer__image' src={Whatsapp} />
+                        <img onClick={()=>redirect('www.facebook', com)} className='footer__image' src={Facebook} />
+                        <img onClick={()=>redirect('web.whatsapp', com)} className='footer__image' src={Whatsapp} />
                     </div>
                     <div className='footer__imgcontainer footer__imgcontainer--inside'>
-                        <img onClick={()=>redirect('x', 'com')} className='footer__image' src={X} />
-                        <img onClick={()=>redirect('instagram', 'com')} className='footer__image' src={Instagram} />
+                        <img onClick={()=>redirect('www.x', com)} className='footer__image' src={X} />
+                        <img onClick={()=>redirect('www.instagram', com)} className='footer__image' src={Instagram} />
                     </div>
                 </div>
             </div>
             <div className='footer__element'>
-                <img onClick={()=>redirect('usm', 'cl')} className='footer__image footer__image--usm' src={UTFSM} />
+                <img onClick={()=>redirect('www.usm', cl)} className='footer__image footer__image--usm' src={UTFSM} />
             </div>
         </div>
     );
