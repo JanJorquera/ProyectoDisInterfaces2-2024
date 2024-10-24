@@ -1,0 +1,86 @@
+.denuncias-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .denuncias-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  
+    th, td {
+      padding: 15px;
+      text-align: left; /* Alineamos a la izquierda */
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #62CEC4;
+      color: black;
+      text-align: left; /* Alineamos los títulos de las columnas a la izquierda */
+    }
+  
+    td {
+      background-color: #f9f9f9;
+    }
+  
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  
+    .btn-ver-denuncia {
+      background-color: #62CEC4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+  
+      &:hover {
+        background-color: #4ab1a5;
+      }
+    }
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    font-size: 14px;
+  
+    .pagination-buttons {
+      display: flex; /* Mantiene los botones juntos */
+  
+      button {
+        background-color: #62CEC4;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 5px; /* Añadimos margen entre los botones */
+  
+        &:hover {
+          background-color: #4ab1a5;
+        }
+  
+        &:disabled {
+          background-color: #e0e0e0;
+          cursor: not-allowed;
+        }
+      }
+    }
+  
+    span {
+      margin: 0 10px;
+    }
+  }
+  
