@@ -8,7 +8,6 @@ import MyReportsPage from '../pages/myreports_page.jsx';
 import DenunciarPage from '../pages/denunciar_page';
 import AboutPage from '../pages/about_page';
 import Footer from '../components/footer';
-import MisDenunciasPage from '../pages/mis_denuncias_page';
 
 const Layout = () => {
   const [isLoged, setisLoged] = useState(false);
@@ -22,7 +21,6 @@ const Layout = () => {
             <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged}/>} />
             <Route path='/denunciar' element={<DenunciarPage />} />
             <Route path='/about' element={<AboutPage />} />
-            <Route path='/mis-denuncias' element={<MisDenunciasPage />} />
           </Routes>
         </div>
       </div>
