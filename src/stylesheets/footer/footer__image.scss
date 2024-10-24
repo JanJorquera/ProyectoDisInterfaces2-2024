@@ -1,4 +1,10 @@
 .footer__image{
+    cursor: pointer;
     max-width: 30px;
     max-height: 30px;
+
+    &--usm{
+        max-width: 100px;
+        max-height: 100px;
+    }
 }

@@ -1,3 +1,10 @@
 .footer__imgcontainer{
     display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    &--inside{
+        flex-direction: row;
+        gap: 3px;
+    }
 }
