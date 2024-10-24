@@ -7,6 +7,7 @@ import DenunciarPage from '../pages/denunciar_page';
 import AboutPage from '../pages/about_page';
 import NavBar from '../components/nav_bar';
 import Footer from '../components/footer';
+import MisDenunciasPage from '../pages/mis_denuncias_page';
 
 const Layout = () => {
   
@@ -20,6 +21,7 @@ const Layout = () => {
             <Route path='/lightbulb' element={<LightbulbPage />} />
             <Route path='/denunciar' element={<DenunciarPage />} />
             <Route path='/about' element={<AboutPage />} />
+            <Route path='/mis-denuncias' element={<MisDenunciasPage />} />
           </Routes>
         </div>
       </div>
