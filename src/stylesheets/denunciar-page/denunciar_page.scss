@@ -1,113 +1,121 @@
 .denunciar-container {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 20px;
-  }
-  
-  .denunciar-box {
-    border: 2px solid #ccc;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  
-  .denunciar-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .flex-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    gap: 40px; /* Añadimos espacio entre las secciones */
-  }
-  
-  .section {
-    flex: 1;
-  
-    .input-group {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.denunciar-box {
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.denunciar-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 40px; /* Añadimos espacio entre las secciones */
+}
+
+.section {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+
+  .input-group {
       margin-bottom: 15px;
-  
+
       label {
-        display: block;
-        text-align: left;
-        font-weight: bold;
-      }
-  
-      input {
-        width: 100%;
-        border: 2px solid #62CEC4;
-        padding: 5px;
-        margin-bottom: 10px;
-      }
-  
-      textarea {
-        width: 100%;
-        height: 80px;
-        resize: none;
-        border: 2px solid #62CEC4;
-        padding: 5px;
-        margin-bottom: 10px;
-      }
-    }
-  
-    .inline-input-group {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-  
-      div {
-        flex: 1;
-        margin-right: 20px;
-  
-        &:last-child {
-          margin-right: 0;
-        }
-  
-        label {
           display: block;
           text-align: left;
           font-weight: bold;
-          width: 100px;
-        }
-  
-        input {
+      }
+
+      input {
           width: 100%;
           border: 2px solid #62CEC4;
           padding: 5px;
-        }
+          margin-bottom: 10px;
       }
-    }
+
+      /* Hacemos que el campo de descripción sea más largo */
+      textarea {
+          width: 100%;
+          height: 200px; /* Aumentamos la altura */
+          resize: none;
+          border: 2px solid #62CEC4;
+          padding: 5px;
+          margin-bottom: 10px;
+      }
   }
-  
-  /* Estilos para centrar y dar fondo a los subtítulos de las secciones */
-  .section-title {
-    text-align: center;
-    background-color: #62CEC4;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #62CEC4;
-    font-weight: bold;
+
+  .inline-input-group {
+      display: block; /* Cambiado a 'block' para apilar los elementos */
+      margin-bottom: 15px;
+
+      div {
+          margin-bottom: 15px; /* Asegura un margen entre los campos */
+
+          label {
+              display: block;
+              text-align: left;
+              font-weight: bold;
+              width: 100%; /* Asegura que el label ocupe el ancho completo */
+          }
+
+          input {
+              width: 100%;
+              border: 2px solid #62CEC4;
+              padding: 5px;
+          }
+      }
   }
-  
+
+  /* Cambios solo para el campo desplegable */
+  .input-group select {
+      width: 100%;
+      border: 2px solid #62CEC4; /* Mismo color de borde */
+      padding: 5px;
+      margin-bottom: 10px;
+      height: 40px; /* Ajustamos la altura para que sea igual que los otros campos */
+      box-sizing: border-box;
+  }
+
+  /* Aseguramos que el botón se mantenga en la parte inferior */
   .submit-btn {
-    text-align: right;
-  
-    button {
-      background-color: #18F0C9;
-      color: black;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-  
-    button:hover {
-      background-color: #12D4B1;
-    }
+      margin-top: auto; /* Ocupa el espacio disponible arriba */
+      text-align: right;
+
+      button {
+          background-color: #18F0C9;
+          color: black;
+          border: none;
+          border-radius: 5px;
+          padding: 10px 20px;
+          cursor: pointer;
+          font-size: 16px;
+      }
+
+      button:hover {
+          background-color: #12D4B1;
+      }
   }
-  
+}
+
+/* Estilos para centrar y dar fondo a los subtítulos de las secciones */
+.section-title {
+  text-align: center;
+  background-color: #62CEC4;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #62CEC4;
+  font-weight: bold;
+}
