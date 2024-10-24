@@ -1,8 +1,6 @@
 .footer__subelement {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 5px;
 
     &--container{
         flex-direction: column;
@@ -10,6 +8,6 @@
 
     &--content{
         flex-direction: row;
-        gap: 3px;
+        gap: 6px;
     }
 }

@@ -49,11 +49,11 @@ export const Footer = () => {
             <div className='footer__element'>
                 <div className='footer__subelement'>Redes Sociales</div>
                 <div className='footer__imgcontainer'>
-                    <div>
+                    <div className='footer__imgcontainer footer__imgcontainer--inside'>
                         <img onClick={()=>redirect('facebook', 'com')} className='footer__image' src={Facebook} />
                         <img onClick={()=>redirect('web.whatsapp', 'com')} className='footer__image' src={Whatsapp} />
                     </div>
-                    <div>
+                    <div className='footer__imgcontainer footer__imgcontainer--inside'>
                         <img onClick={()=>redirect('x', 'com')} className='footer__image' src={X} />
                         <img onClick={()=>redirect('instagram', 'com')} className='footer__image' src={Instagram} />
                     </div>
