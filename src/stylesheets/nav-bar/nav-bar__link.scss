@@ -1,11 +1,20 @@
-.nav-bar__link {
+.nav-bar__button {
   display: inline-block;
   margin-right: 15px;
-  padding: 8px;
-  color: rgb(4, 100, 253);
+  padding: 8px 16px;
+  color: #000000;
+  background-color: #18F0C9;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #aaa;
+  }
 
   &--active {
-    background: #222;
+    background-color: #002b4d;
     color: white;
   }
 }

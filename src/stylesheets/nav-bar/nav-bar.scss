@@ -1,5 +1,36 @@
 .nav-bar {
   display: flex;
-  background-color: #ccc;
-  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #62CEC4;
+  padding: 10px 20px;
+}
+
+.nav-bar__title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-bar__links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-bar__button {
+  background-color: transparent;
+  border: none;
+  color: rgb(4, 100, 253);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.nav-bar__button--active {
+  background-color: #222; 
+  color: white;
 }
