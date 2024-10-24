@@ -1,0 +1,13 @@
+.footer__subelement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--container{
+        flex-direction: column;
+    }
+
+    &--content{
+        flex-direction: column !important;
+    }
+}
