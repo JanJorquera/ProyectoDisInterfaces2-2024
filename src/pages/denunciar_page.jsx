@@ -76,7 +76,11 @@ const DenunciarPage = () => {
               </div>
               <div className="input-group">
                 <label>Tipo de Denuncia</label>
-                <input type="text" required />
+                <select required>
+                  <option value="semaforos">Semáforos</option>
+                  <option value="iluminacion">Iluminación</option>
+                  <option value="pavimento">Pavimento</option>
+                </select>
               </div>
               <div className="input-group">
                 <label>Dirección Denuncia</label>
