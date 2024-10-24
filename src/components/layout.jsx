@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import NavBar from '../components/nav_bar';
 import HomePage from '../pages/home_page'
-import LightbulbPage from '../pages/lightbulb_page'
+import LightbulbPage from '../pages/lightbulb_page';
+import MyReportsPage from '../pages/myreports_page.jsx';
 import DenunciarPage from '../pages/denunciar_page';
 import AboutPage from '../pages/about_page';
-import NavBar from '../components/nav_bar';
 import Footer from '../components/footer';
 
 const Layout = () => {
-  
+  const [isLoged, setisLoged] = useState(false);
   return (
     <BrowserRouter>
       <div className='layout'>
@@ -17,7 +18,7 @@ const Layout = () => {
         <div className='layout__page'>
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/lightbulb' element={<LightbulbPage />} />
+            <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged}/>} />
             <Route path='/denunciar' element={<DenunciarPage />} />
             <Route path='/about' element={<AboutPage />} />
           </Routes>
