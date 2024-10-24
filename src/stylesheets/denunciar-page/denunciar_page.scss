@@ -1,0 +1,84 @@
+.denunciar-container {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  .denunciar-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .denunciar-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .section {
+    flex: 1;
+    margin-right: 20px;
+  
+    &:last-child {
+      margin-right: 0;
+    }
+  
+    /* Centramos el subtítulo dentro de cada sección */
+    h2 {
+      text-align: center;
+    }
+  
+    .input-group {
+      margin-bottom: 10px;
+  
+      label {
+        display: block;
+      }
+  
+      input {
+        width: 100%;
+      }
+  
+      textarea {
+        width: 100%;
+        height: 80px;
+        resize: none;
+      }
+    }
+  
+    .inline-input-group {
+      display: flex;
+      justify-content: space-between;
+  
+      div {
+        flex: 1;
+        margin-right: 10px;
+  
+        &:last-child {
+          margin-right: 0;
+        }
+  
+        label {
+          display: block;
+          width: 100px;
+        }
+  
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  .submit-btn {
+    text-align: right;
+  }
+  
