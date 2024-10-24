@@ -5,11 +5,15 @@ export const LoginSignup = ({setisLoged}) => {
   const [rut, setRut] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rutR, setRutR] = useState("");
+  const [passwordR, setPasswordR] = useState("");
   const [isRegisterPress, setisRegisterPress] = useState(false);
 
   const handleRutChange = (event) => setRut(event.target.value);
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
+  const handleRutRChange = (event) => setRutR(event.target.value);
+  const handlePasswordRChange = (event) => setPasswordR(event.target.value);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,8 +32,8 @@ export const LoginSignup = ({setisLoged}) => {
           <label>Rut:</label>
           <input
             type="text"
-            value={rut}
-            onChange={handleRutChange}
+            value={isRegisterPress ? rutR : rut}
+            onChange={(event) => isRegisterPress ? handleRutRChange(event) : handleRutChange(event)}
             required
           />
         </div>
@@ -51,8 +55,8 @@ export const LoginSignup = ({setisLoged}) => {
           <label>Contraseña:</label>
           <input
             type="password"
-            value={password}
-            onChange={handlePasswordChange}
+            value={isRegisterPress ? passwordR : password}
+            onChange={(event) => isRegisterPress ? handlePasswordRChange(event) : handlePasswordChange(event)}
             required
           />
         </div>
