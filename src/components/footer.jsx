@@ -20,7 +20,7 @@ export const Footer = () => {
             <div className='footer__element'>
                 <div className='footer__subelement'>Contacto</div>
                 <div className='footer__subelement--container'>
-                    <div className='footer__subelement--content'>
+                    <div className='footer__subelement footer__subelement--content'>
                         <div className='footer__contact'>
                             <FontAwesomeIcon icon={faPhone} />
                         </div>
@@ -28,7 +28,7 @@ export const Footer = () => {
                             +562 133 523 22
                         </div>
                     </div>
-                    <div className='footer__subelement--content'>
+                    <div className='footer__subelement footer__subelement--content'>
                         <div className='footer__contact'>
                             <FontAwesomeIcon icon={faEnvelope} />
                         </div>
@@ -36,7 +36,7 @@ export const Footer = () => {
                             muni@denuncia.com
                         </div>
                     </div>
-                    <div className='footer__subelement--content'>
+                    <div className='footer__subelement footer__subelement--content'>
                         <div className='footer__contact'>
                             <FontAwesomeIcon icon={faMapLocationDot} />
                         </div>

@@ -2,12 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 
     &--container{
         flex-direction: column;
     }
 
     &--content{
-        flex-direction: column !important;
+        flex-direction: row;
+        gap: 3px;
     }
 }
