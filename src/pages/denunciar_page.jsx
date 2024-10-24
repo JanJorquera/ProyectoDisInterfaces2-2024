@@ -11,8 +11,16 @@ const DenunciarPage = () => {
   
           {/* Contenedor de subtítulos, centrados */}
           <div className="flex-container">
-            <h2>Datos Vecino</h2>
-            <h2>Datos Denuncia</h2>
+            <div className="section">
+              <div className="section-title-container">
+                <h2 className="section-title">Datos Vecino</h2>
+              </div>
+            </div>
+            <div className="section">
+              <div className="section-title-container">
+                <h2 className="section-title">Datos Denuncia</h2>
+              </div>
+            </div>
           </div>
   
           <div className="flex-container">
@@ -49,7 +57,7 @@ const DenunciarPage = () => {
                   <input type="text" />
                 </div>
                 <div>
-                  <label>Casa / Depto / Oficina</label>
+                  <label>Casa/ Depto/ Oficina</label>
                   <input type="text" />
                 </div>
               </div>
