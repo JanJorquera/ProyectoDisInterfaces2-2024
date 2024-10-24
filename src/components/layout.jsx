@@ -1,13 +1,15 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import HomePage from '../pages/home_page'
 import LightbulbPage from '../pages/lightbulb_page'
 import DenunciarPage from '../pages/denunciar_page';
 
-import NavBar from '../components/nav_bar'
+import NavBar from '../components/nav_bar';
+import Footer from '../components/footer';
 
 const Layout = () => {
+  
   return (
     <BrowserRouter>
       <div className='layout'>
@@ -20,8 +22,9 @@ const Layout = () => {
           </Routes>
         </div>
       </div>
+      <Footer />
     </BrowserRouter>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
