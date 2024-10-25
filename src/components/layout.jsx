@@ -11,6 +11,7 @@ import Footer from '../components/footer';
 
 const Layout = () => {
   const [isLoged, setisLoged] = useState(false);
+  const [userRut, setuserRut] = useState("");
   return (
     <BrowserRouter>
       <div className='layout'>
@@ -18,7 +19,7 @@ const Layout = () => {
         <div className='layout__page'>
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged}/>} />
+            <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut}/>} />
             <Route path='/denunciar' element={<DenunciarPage />} />
             <Route path='/about' element={<AboutPage />} />
           </Routes>
