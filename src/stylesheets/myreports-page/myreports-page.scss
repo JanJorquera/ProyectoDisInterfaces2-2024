@@ -59,7 +59,7 @@
     .pagination-buttons {
       display: flex; /* Mantiene los botones juntos */
   
-      button {
+      .pagination-buttons__button {
         background-color: #62CEC4;
         color: white;
         border: none;
@@ -72,9 +72,13 @@
           background-color: #4ab1a5;
         }
   
-        &:disabled {
+        &--bloqueado {
           background-color: #e0e0e0;
           cursor: not-allowed;
+
+          &:hover {
+            background-color: #e0e0e0;
+          }
         }
       }
     }
