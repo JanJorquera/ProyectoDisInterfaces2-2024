@@ -7,7 +7,8 @@ const Modal = ({
   messageTitle, 
   message, 
   showSuccess, 
-  autoClose 
+  autoClose,
+  modalType 
 }) => {
   useEffect(() => {
     if (isOpen && autoClose) {
@@ -28,12 +29,16 @@ const Modal = ({
         <div className="modal-content">
           <h2>{messageTitle}</h2>
           <p>{message}</p>
-          {showSuccess && !autoClose && (
+          
+          {/* Modal tipo 1 */}
+          {modalType === 1 && showSuccess && !autoClose && (
             <button className="confirm-modal" onClick={toggleModal}>
               CONTINUAR
             </button>
           )}
-          {!showSuccess && (
+
+          {/* Modal tipo 2 */}
+          {modalType === 2 && !showSuccess && (
             <>
               <button className="close-modal" onClick={toggleModal}>
                 CANCELAR
@@ -42,6 +47,13 @@ const Modal = ({
                 SI
               </button>
             </>
+          )}
+
+          {/* Modal tipo 3 */}
+          {modalType === 3 && (
+            <button className="confirm-modal" onClick={toggleModal}>
+              X
+            </button>
           )}
         </div>
       </div>

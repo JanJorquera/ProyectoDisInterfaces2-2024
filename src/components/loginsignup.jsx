@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Modal from '../components/modal';
 
-export const LoginSignup = ({setisLoged, setuserRut}) => {
+export const LoginSignup = ({ setisLoged, setuserRut }) => {
   const [rut, setRut] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,19 +23,21 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
     event.preventDefault();
     if (isRegisterPress) {
       setModalTitle("Te has registrado con éxito");
-      setuserRut(rutR);
+      setuserRut(rutR); 
     } else {
       setModalTitle("Has iniciado sesión correctamente");
-      setuserRut(rut);
+      setuserRut(rut); 
     }
-    setModalOpen(true);
-    
+    setModalMessage(""); 
+    setModalOpen(true); 
   };
 
   const toggleForm = () => setisRegisterPress(!isRegisterPress);
+
+  
   const handleModalClose = () => {
     setModalOpen(false);
-    setisLoged(true);
+    setisLoged(true);  
   };
 
   return (
@@ -52,7 +54,7 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
               required
             />
           </div>
-          {isRegisterPress ? 
+          {isRegisterPress && (
             <div className='loginsignup__field'>
               <label>Email:</label>
               <input
@@ -62,9 +64,7 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
                 required
               />
             </div>
-          : 
-            <></>
-          }
+          )}
           
           <div className='loginsignup__field'>
             <label>Contraseña:</label>
@@ -82,23 +82,18 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
           <div className='loginsignup__link' onClick={toggleForm}>
             {isRegisterPress ? "¿Ya tienes cuenta? Inicia sesión" : "¿No tienes cuenta? Regístrate"}
           </div>
-          {
-            /*
-            <div>|</div>
-            <div className='loginsignup__link'>¿Olvidaste tu contraseña?</div>
-            */
-          }
         </div>
       </div>
       {/* Modal para el registro o inicio de sesión exitoso */}
       <Modal
         isOpen={isModalOpen}
-        toggleModal={() => setModalOpen(false)}
-        onConfirm={handleModalClose}
+        toggleModal={handleModalClose}  
+        onConfirm={handleModalClose}  
         messageTitle={modalTitle}
         message={modalMessage}
         showSuccess={true}
-        autoClose={true}
+        autoClose={false}  
+        modalType={3}  
       />
     </div>
   );

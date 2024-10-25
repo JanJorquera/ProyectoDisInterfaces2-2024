@@ -7,19 +7,27 @@ const DenunciarPage = () => {
   const [isConfirmed, setConfirmed] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalTitle, setModalTitle] = useState("");
+  const [modalType, setModalType] = useState(2);  // Definimos el modalType, inicializando con tipo 2 para confirmar la denuncia
 
+  // Acción cuando se envía el formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     setModalTitle("¿Desea confirmar la denuncia?");
+    setModalMessage("Esta acción no se puede deshacer.");
+    setModalType(2); // Tipo 2: Confirmación con "CANCELAR" y "SI"
     setModalOpen(true);
     setConfirmed(false);
   };
 
+  // Confirmación de la denuncia
   const handleConfirm = () => {
     setConfirmed(true);
     setModalTitle("Denuncia enviada exitosamente");
+    setModalMessage(""); // Puedes limpiar el mensaje si no quieres mostrar uno nuevo
+    setModalType(1);  // Tipo 1: Mostrar éxito con botón "CONTINUAR"
   };
 
+  // Cierre del modal de éxito
   const handleCloseSuccess = () => {
     setModalOpen(false);
     setConfirmed(false);
@@ -98,15 +106,17 @@ const DenunciarPage = () => {
         </form>
       </div>
 
+      {/* Modal dinámico dependiendo del tipo */}
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
-          toggleModal={handleCloseSuccess}
-          onConfirm={handleConfirm}
+          toggleModal={handleCloseSuccess}  // Cierra el modal después de confirmación o éxito
+          onConfirm={handleConfirm}        // Acción a tomar cuando se confirma la denuncia
           messageTitle={modalTitle}
           message={modalMessage}
-          showSuccess={isConfirmed}
-          autoClose={false}
+          showSuccess={isConfirmed}        // Mostrar éxito si ya está confirmada
+          autoClose={false}                // No usar autocierre en este caso
+          modalType={modalType}            // Determina si es tipo 1 o tipo 2
         />
       )}
     </div>
