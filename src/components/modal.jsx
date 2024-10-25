@@ -27,6 +27,15 @@ const Modal = ({
       <div className="overlay" onClick={toggleModal}></div>
       <div className="modal">
         <div className="modal-content">
+          {/* Modal tipo 3 */}
+          {modalType === 3 && (
+            <div className='confirm-modalcontainer'>
+              <button className="confirm-modal confirm-modal--x" onClick={toggleModal}>
+                X
+              </button>
+            </div>
+          )}
+
           <h2>{messageTitle}</h2>
           <p>{message}</p>
           
@@ -49,12 +58,6 @@ const Modal = ({
             </>
           )}
 
-          {/* Modal tipo 3 */}
-          {modalType === 3 && (
-            <button className="confirm-modal" onClick={toggleModal}>
-              X
-            </button>
-          )}
         </div>
       </div>
     </>
