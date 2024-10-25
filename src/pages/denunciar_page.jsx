@@ -5,19 +5,19 @@ import '../stylesheets/denunciar-page/denunciar_page.scss';
 const DenunciarPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isConfirmed, setConfirmed] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalTitle, setModalTitle] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setModalTitle("¿Desea confirmar la denuncia?");
     setModalOpen(true);
     setConfirmed(false);
   };
 
   const handleConfirm = () => {
     setConfirmed(true);
-  };
-
-  const handleCancel = () => {
-    setModalOpen(false);
+    setModalTitle("Denuncia enviada exitosamente");
   };
 
   const handleCloseSuccess = () => {
@@ -101,10 +101,12 @@ const DenunciarPage = () => {
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
-          toggleModal={handleCancel}
+          toggleModal={handleCloseSuccess}
           onConfirm={handleConfirm}
+          messageTitle={modalTitle}
+          message={modalMessage}
           showSuccess={isConfirmed}
-          onCloseSuccess={handleCloseSuccess}
+          autoClose={false}
         />
       )}
     </div>

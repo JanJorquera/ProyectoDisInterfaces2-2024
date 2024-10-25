@@ -19,7 +19,6 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
   const handleRutRChange = (event) => setRutR(event.target.value);
   const handlePasswordRChange = (event) => setPasswordR(event.target.value);
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     setisLoged(true);
