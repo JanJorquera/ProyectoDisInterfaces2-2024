@@ -21,7 +21,6 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setisLoged(true);
     if (isRegisterPress) {
       setModalTitle("Te has registrado con éxito");
       setuserRut(rutR);
@@ -29,6 +28,8 @@ export const LoginSignup = ({setisLoged, setuserRut}) => {
       setModalTitle("Has iniciado sesión correctamente");
       setuserRut(rut);
     }
+    setModalOpen(true);
+    
   };
 
   const toggleForm = () => setisRegisterPress(!isRegisterPress);
