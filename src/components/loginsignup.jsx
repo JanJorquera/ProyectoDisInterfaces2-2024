@@ -25,7 +25,7 @@ export const LoginSignup = ({ setisLoged, setuserRut }) => {
       setModalTitle("Te has registrado con éxito");
       setuserRut(rutR); 
     } else {
-      setModalTitle("Has iniciado sesión correctamente");
+      setModalTitle("Sesión iniciada correctamente");
       setuserRut(rut); 
     }
     setModalMessage(""); 
