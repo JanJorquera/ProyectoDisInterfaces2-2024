@@ -30,7 +30,7 @@ export const MyReportsPage = ({isLoged, setisLoged, userRut, setuserRut}) =>{
         var retorno = "pagination-buttons__button";
         if (dir === "left" && numPag === 1) {
             retorno = retorno + " pagination-buttons__button--bloqueado";
-        } else if (dir === "right" && numPag === Math.trunc(muestraDenuncias[userRut].length / sizePag)+1) {
+        } else if (dir === "right" && numPag === Math.trunc(muestraDenuncias[userRut].length / sizePag)) {
             retorno = retorno + " pagination-buttons__button--bloqueado";
         }
         return retorno;
@@ -87,12 +87,27 @@ export const MyReportsPage = ({isLoged, setisLoged, userRut, setuserRut}) =>{
                                 <span>Filas máximas por página: {`${sizePag}`}</span>
                                 <span>{`${(numPag-1)*sizePag+1}-${ numPag*sizePag+1 < muestraDenuncias[userRut].length ? numPag*sizePag : muestraDenuncias[userRut].length} de ${muestraDenuncias[userRut].length}`}</span>
                                 <div className="pagination-buttons">
-                                    <div className={handleClass("left")} onClick={()=>{setnumPag(numPag-1)}}>
-                                        <FontAwesomeIcon icon={faChevronLeft} />
-                                    </div>
-                                    <div className={handleClass("right")} onClick={()=>{setnumPag(numPag+1)}}>
-                                        <FontAwesomeIcon icon={faChevronRight} />
-                                    </div>
+                                    {
+                                        numPag === 1 ? 
+                                        <div className={handleClass("left")}>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                        </div>
+                                        : 
+                                        <div className={handleClass("left")} onClick={()=>{setnumPag(numPag-1)}}>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                        </div>
+                                    }
+
+                                    {
+                                        numPag*sizePag+1 < muestraDenuncias[userRut].length ? 
+                                        <div className={handleClass("right")} onClick={()=>{setnumPag(numPag+1)}}>
+                                            <FontAwesomeIcon icon={faChevronRight} />
+                                        </div>
+                                        :
+                                        <div className={handleClass("right")}>
+                                            <FontAwesomeIcon icon={faChevronRight} />
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </>
