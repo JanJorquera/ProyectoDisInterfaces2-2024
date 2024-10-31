@@ -48,13 +48,13 @@ const Layout = () => {
       {location.pathname !== '/' && <NavBar isLoged={isLoged} isAdmin={isAdmin} setuserRut={setuserRut} setisLoged={setisLoged}/>}
       <div className='layout__page'>
         <Routes>
-          <Route path='/' element={<UserTypeSelection setisAdmin={setisAdmin}/>} />
+          <Route path='/' element={<UserTypeSelection setisAdmin={setisAdmin} userRut={userRut}/>} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} muestraDenuncias={muestraDenuncias}/>} />
           <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento}/>} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/detalle-denuncias' element={<ReportDetail isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} />}/>
-          <Route path='/admin' element={<AdminReportsPage muestraDenuncias={muestraDenuncias} />} />
+          <Route path='/admin' element={<AdminReportsPage muestraDenuncias={muestraDenuncias} userRut={userRut} isLoged={isLoged} setisLoged={setisLoged} setuserRut={setuserRut}/>} />
         </Routes>
       </div>
       {location.pathname !== '/' && <Footer />}

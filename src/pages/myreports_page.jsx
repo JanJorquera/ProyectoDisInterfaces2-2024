@@ -14,21 +14,6 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
     const [filtroTipo, setFiltroTipo] = useState(filtrosIniciales.filtroTipo || '');
     const sizePag = 4;
 
-    /*
-    const muestraDenuncias = {
-        "21.219.902-8": [
-            { tipo: 'Semáforo', direccion: 'Calle 123', fecha: '24-10-2024', estado: 'Pendiente' },
-            { tipo: 'Bache', direccion: 'Av. Siempre Viva', fecha: '02-10-2024', estado: 'En progreso' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-        ]
-    };*/
-
     const denunciasUsuario = muestraDenuncias[userRut] || [];
     const isRutSinDenuncias = !denunciasUsuario.length;
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(denunciasUsuario);
@@ -179,7 +164,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
                     </div>
                 )
             ) : (
-                <LoginSignup setisLoged={setisLoged} setuserRut={setuserRut} />
+                <LoginSignup setisLoged={setisLoged} setuserRut={setuserRut} isAdmin={false}/>
             )}
         </>
     );

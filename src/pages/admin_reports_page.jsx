@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import LoginSignup from '../components/loginsignup';
 
-export const AdminReportsPage = ({ muestraDenuncias }) => {
+export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoged, setuserRut }) => {
     const [numPag, setnumPag] = useState(1);
     const [filtroTiempo, setFiltroTiempo] = useState('');
     const [filtroEstado, setFiltroEstado] = useState('');
@@ -86,6 +87,7 @@ export const AdminReportsPage = ({ muestraDenuncias }) => {
     };
 
     return (
+        isLoged ? (
         <div className="denuncias-container">
             <h1>Todas las Denuncias</h1>
 
@@ -152,6 +154,9 @@ export const AdminReportsPage = ({ muestraDenuncias }) => {
                 </>
             )}
         </div>
+        ) : (
+            <LoginSignup setisLoged={setisLoged} setuserRut={setuserRut} isAdmin={true}/>
+        )
     );
 };
 

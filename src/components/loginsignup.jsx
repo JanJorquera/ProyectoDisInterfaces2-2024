@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Modal from '../components/modal';
 
-export const LoginSignup = ({ setisLoged, setuserRut }) => {
+export const LoginSignup = ({ setisLoged, setuserRut, isAdmin }) => {
   const [rut, setRut] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -79,11 +79,14 @@ export const LoginSignup = ({ setisLoged, setuserRut }) => {
           
           <button className='button' type="submit">{isRegisterPress ? "Registrarse" : "Iniciar Sesión"}</button>
         </form>
+        {isAdmin ? <></> 
+        : 
         <div className='loginsignup__linkcontainer'>
           <div className='loginsignup__link' onClick={toggleForm}>
             {isRegisterPress ? "¿Ya tienes cuenta? Inicia sesión" : "¿No tienes cuenta? Regístrate"}
           </div>
         </div>
+        }
       </div>
       {/* Modal para el registro o inicio de sesión exitoso */}
       <Modal
