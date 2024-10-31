@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LoginSignup from '../components/loginsignup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestraDenuncias }) => {
     const [numPag, setnumPag] = useState(1);
@@ -87,7 +88,15 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
                 <td>{denuncia.direccion}</td>
                 <td>{denuncia.fecha}</td>
                 <td>{denuncia.estado}</td>
-                <td><button className="btn-ver-denuncia">Ver</button></td>
+                <td>
+                    <Link 
+                        to="/detalle-denuncias" 
+                        state={{ denuncia }} // Pasa los datos de la denuncia aquí
+                        className="btn-ver-denuncia"
+                    >
+                        Ver
+                    </Link>
+                </td>
             </tr>
         ));
     };

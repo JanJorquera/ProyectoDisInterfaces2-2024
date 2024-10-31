@@ -8,7 +8,7 @@ export const AboutPage = () => {
       <div className='about-page__container'>
         <div className='about-page__content'>
           <p>
-            MuniDenuncia es un sistema que aborda el problema de la falta de comunicación efectiva y respuesta oportuna a los problemas urbanos mediante la digitalización y automatización de los procesos de denuncia y gestión. Este sistema permite a la municipalidad optimizar el uso de recursos, mejorar la transparencia y la rendición de cuentas, y aumentar la satisfacción de los ciudadanos mediante una respuesta más rápida y eficiente a los problemas que afectan su calidad de vida.
+            MuniDenuncia es un sistema que aborda la falta de comunicación efectiva y respuesta oportuna a los problemas urbanos mediante la digitalización y automatización de los procesos de denuncia y gestión de estos. Desarrollado por nuestro equipo, MuniDenuncia no solo optimiza el uso de recursos municipales, sino que también mejora la transparencia y rendición de cuentas, al ofrecer a los ciudadanos una plataforma accesible para reportar problemas urbanos. Nuestra contribución se centra en proporcionar una solución integral que agiliza la identificación, priorización y resolución de estos incidentes, permitiendo a la municipalidad responder de manera rápida y eficiente. Este sistema fortalece la relación entre la municipalidad y los ciudadanos al garantizar que sus reportes sean atendidos de forma transparente y con resultados medibles, generando confianza en la gestión municipal.
           </p>
         </div>
         <img src={municipalidad2} alt='Municipalidad' className='about-page__image' />

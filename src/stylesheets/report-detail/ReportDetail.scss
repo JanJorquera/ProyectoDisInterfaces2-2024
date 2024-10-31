@@ -1,0 +1,82 @@
+.report-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+// Columnas para disposición
+.left-column {
+    flex: 1; // Ocupa espacio igual en la columna izquierda
+}
+
+.center-column {
+    flex: 1; // Ocupa espacio igual en la columna central
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-column {
+    flex: 1; // Ocupa espacio igual en la columna derecha
+}
+
+// Estilos generales para las cabeceras de sección
+.section-header {
+    background-color: #62CEC4;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+    text-align: center;
+}
+
+// Contenido de cada sección
+.section-content {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #333;
+    p {
+        margin: 0;
+        padding: 5px 0;
+    }
+}
+
+// Cuadro de descripción de la denuncia
+.description-box {
+    min-height: 150px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+// Cuadro de respuesta municipal
+.response-box {
+    min-height: 150px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+// Cuadro de estado de la denuncia
+.status-box {
+    margin-top: 15px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
