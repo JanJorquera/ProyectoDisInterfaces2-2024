@@ -47,7 +47,7 @@ const Layout = () => {
       <div className='layout__page'>
         <Routes>
           <Route path='/' element={<UserTypeSelection setisAdmin={setisAdmin}/>} />
-          <Route path={isAdmin ? '/admin': '/home'} element={<HomePage />} />
+          <Route path='/home' element={<HomePage />} />
           <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} muestraDenuncias={muestraDenuncias}/>} />
           <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento}/>} />
           <Route path='/about' element={<AboutPage />} />
