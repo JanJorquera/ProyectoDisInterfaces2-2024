@@ -1,12 +1,22 @@
-import React from 'react'
+// src/pages/HomePage.jsx
+import React from 'react';
+import '../stylesheets/home/HomePage.scss';
+import iluminaImage from '../assets/Ilumina.jpg';
 
-export const HomePage = () => {
+
+const HomePage = () => {
   return (
-    <>
-      <p>¡Te damos la bienvenida a la Interfaz energética!</p>
-      <p>En esta página encontraras una 💡 ampolleta que podrás encender y apagar con un botón</p>
-    </>
-  )
-}
+    <div className="home-container">
+      <h2>Últimas Noticias</h2>
+      <div className="news-item">
+      <img src={iluminaImage} alt="Imagen de noticia" className="news-image" />
+        <div className="news-content">
+          <h3>Nuevos Postes de Luz</h3>
+          <p>50 nuevos postes de luz Instalados</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;

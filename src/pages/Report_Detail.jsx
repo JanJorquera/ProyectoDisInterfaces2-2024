@@ -11,7 +11,7 @@ const ReportDetail = () => {
         return <p>No se encontraron datos de la denuncia.</p>;
     }
 
-    return (
+    return (    
         <div className="report-detail-container">
             {/* Sección izquierda: Datos Vecino y Datos Denuncia */}
             <div className="left-column">
