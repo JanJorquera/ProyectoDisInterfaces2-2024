@@ -10,6 +10,8 @@ import DenunciarPage from '../pages/denunciar_page';
 import AboutPage from '../pages/about_page';
 import Footer from '../components/footer';
 import ReportDetail from '../pages/Report_Detail.jsx'
+import AdminReportsPage from '../pages/admin_reports_page.jsx';
+
 
 const Layout = () => {
   const [isLoged, setisLoged] = useState(false);
@@ -52,6 +54,7 @@ const Layout = () => {
           <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento}/>} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/detalle-denuncias' element={<ReportDetail isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} />}/>
+          <Route path='/admin' element={<AdminReportsPage muestraDenuncias={muestraDenuncias} />} />
         </Routes>
       </div>
       {location.pathname !== '/' && <Footer />}
