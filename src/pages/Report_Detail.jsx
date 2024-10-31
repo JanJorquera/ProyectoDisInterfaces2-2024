@@ -84,7 +84,7 @@ const ReportDetail = ({ isAdmin }) => {
                 }
                 
                 <Link 
-                    to={isAdmin ? "/detalle-denuncias" : "/mis-denuncias"}
+                    to={isAdmin ? "/admin" : "/mis-denuncias"}
                     state={{ filtros }} 
                     className="btn-return"
                 >
