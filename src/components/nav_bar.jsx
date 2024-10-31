@@ -41,6 +41,9 @@ export const NavBar = () => {
         <button className={navLinkClass('/denunciar')} onClick={() => navigate('/denunciar')}>
           Denunciar
         </button>
+        <button className={navLinkClass('/')} onClick={() => navigate('/')}>
+          Cambiar usuario
+        </button>
       </nav>
     </header>
   );
