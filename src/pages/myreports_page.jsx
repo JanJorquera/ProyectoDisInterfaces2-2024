@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginSignup from '../components/loginsignup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
+    // Estado para la página de la tabla y filtros
     const [numPag, setnumPag] = useState(1);
     const [filtroTiempo, setFiltroTiempo] = useState('');
     const [filtroEstado, setFiltroEstado] = useState('');
@@ -15,17 +16,29 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
         "21.219.902-8": [
             { tipo: 'Semáforo', direccion: 'Calle 123', fecha: '24-10-2024', estado: 'Pendiente' },
             { tipo: 'Bache', direccion: 'Av. Siempre Viva', fecha: '02-10-2024', estado: 'En progreso' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' }
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
         ]
     };
 
+    // Obtener las denuncias del usuario logueado usando su userRut
     const denunciasUsuario = muestraDenuncias[userRut] || [];
-    const isRutSinDenuncias = denunciasUsuario.length === 0;
+    const isRutSinDenuncias = !denunciasUsuario.length;
 
-    // Estado para manejar las denuncias mostradas
+    // Estado para manejar las denuncias mostradas, inicializado con las denuncias del usuario
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(denunciasUsuario);
 
-    // Función para aplicar el filtro
+    // Actualizar denuncias filtradas cuando cambie userRut o cuando se aplique un filtro
+    useEffect(() => {
+        setDenunciasFiltradas(denunciasUsuario);
+    }, [userRut]);
+
+    // Función para aplicar el filtro cuando se presiona el botón "Buscar"
     const aplicarFiltro = () => {
         let filtradas = denunciasUsuario;
 
@@ -88,9 +101,9 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
     return (
         <>
             {isLoged ? (
-                isRutSinDenuncias ? 
+                isRutSinDenuncias ? (
                     <div>Aún no tienes denuncias</div>
-                    :
+                ) : (
                     <div className="denuncias-container">
                         <h1>Mis Denuncias</h1>
 
@@ -145,7 +158,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
 
                                 <div className="pagination">
                                     <span>Filas máximas por página: {`${sizePag}`}</span>
-                                    <span>{`${(numPag - 1) * sizePag + 1}-${Math.min(numPag * sizePag, denunciasFiltradas.length)} de ${denunciasFiltradas.length}`}</span>
+                                    <span>{`${(numPag - 1) * sizePag + 1}-${numPag * sizePag < denunciasFiltradas.length ? numPag * sizePag : denunciasFiltradas.length} de ${denunciasFiltradas.length}`}</span>
                                     <div className="pagination-buttons">
                                         <div className={handleClass("left")} onClick={() => numPag > 1 && setnumPag(numPag - 1)}>
                                             <FontAwesomeIcon icon={faChevronLeft} />
@@ -158,6 +171,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
                             </>
                         )}
                     </div>
+                )
             ) : (
                 <LoginSignup setisLoged={setisLoged} setuserRut={setuserRut} />
             )}
