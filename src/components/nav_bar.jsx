@@ -18,7 +18,7 @@ export const NavBar = () => {
     <header className='nav-bar'>
       <h1 
         className='nav-bar__title' 
-        onClick={() => navigate('/')} 
+        onClick={() => navigate('/home')}
         style={{ cursor: 'pointer', margin: 20, display: 'flex', alignItems: 'center' }}
       >
         MuniDenuncias
