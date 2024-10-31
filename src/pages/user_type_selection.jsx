@@ -2,14 +2,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const UserTypeSelection = () => {
+const UserTypeSelection = ({ setisAdmin }) => {
   const navigate = useNavigate();
 
   const handleDenuncianteClick = () => {
+    setisAdmin(false);
     navigate('/home');
   };
 
   const handleAdminClick = () => {
+    setisAdmin(true);
     navigate('/admin'); 
   };
 

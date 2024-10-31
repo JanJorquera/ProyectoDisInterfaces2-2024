@@ -14,6 +14,7 @@ import ReportDetail from '../pages/Report_Detail.jsx'
 const Layout = () => {
   const [isLoged, setisLoged] = useState(false);
   const [userRut, setuserRut] = useState("");
+  const [isAdmin, setisAdmin] = useState(false);
   const [muestraDenuncias, setmuestraDenuncias] = useState({
     "21.219.902-8": [
             { tipo: 'Semáforo', direccion: 'Calle 123', fecha: '24-10-2024', estado: 'Pendiente', nombre: 'Jan Jorquera C', email: 'jan.jorquera@usm.cl', casa: 'Av. Vicuña Mackenna 3939', descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus congue tellus sed nisi scelerisque, at tincidunt orci tristique. Aliquam erat volutpat. Duis pellentesque leo in dictum pulvinar. Proin sed sapien quis lacus facilisis interdum. Suspendisse cursus facilisis gravida. Praesent consequat venenatis augue nec pharetra. Duis a vulputate ante, non malesuada lorem. Fusce dictum, libero in faucibus lacinia, libero dui facilisis diam, non vestibulum purus mauris in augue.', respuesta: ''},
@@ -42,11 +43,11 @@ const Layout = () => {
 
   return (
     <div className='layout'>
-      {location.pathname !== '/' && <NavBar />}
+      {location.pathname !== '/' && <NavBar isLoged={isLoged} isAdmin={isAdmin} setuserRut={setuserRut} setisLoged={setisLoged}/>}
       <div className='layout__page'>
         <Routes>
-          <Route path='/' element={<UserTypeSelection />} />
-          <Route path='/home' element={<HomePage />} />
+          <Route path='/' element={<UserTypeSelection setisAdmin={setisAdmin}/>} />
+          <Route path={isAdmin ? '/admin': '/home'} element={<HomePage />} />
           <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} muestraDenuncias={muestraDenuncias}/>} />
           <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento}/>} />
           <Route path='/about' element={<AboutPage />} />
