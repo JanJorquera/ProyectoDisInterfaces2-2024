@@ -4,6 +4,11 @@
   align-items: center;
   background-color: #62CEC4;
   padding: 10px 20px;
+  position: sticky; 
+  top: 0; 
+  left: 0;
+  width: 97.9%; 
+  z-index: 1000;
 }
 
 .nav-bar__title {

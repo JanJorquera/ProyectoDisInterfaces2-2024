@@ -4,7 +4,18 @@ import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons
 import { Link } from 'react-router-dom';
 import LoginSignup from '../components/loginsignup';
 
-export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoged, setuserRut }) => {
+export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoged, setuserRut, isAdmin }) => {
+
+    const flatDenuncia = () => {
+        var arrayDenuncias = [];
+        for (var key in muestraDenuncias) {
+            for (var objDenuncia of muestraDenuncias[key]) {
+                arrayDenuncias.push({rut: key, ...objDenuncia});
+            }
+        }
+        return arrayDenuncias;
+    }
+
     const [numPag, setnumPag] = useState(1);
     const [filtroTiempo, setFiltroTiempo] = useState('');
     const [filtroEstado, setFiltroEstado] = useState('');
@@ -12,7 +23,7 @@ export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoge
     const sizePag = 4;
 
     // Convertir todas las denuncias en un solo array
-    const todasLasDenuncias = Object.values(muestraDenuncias).flat();
+    const todasLasDenuncias = flatDenuncia(muestraDenuncias);
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(todasLasDenuncias);
 
     useEffect(() => {

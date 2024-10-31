@@ -90,7 +90,8 @@ const DenunciarPage = ({ addElemento }) => {
 
     addElemento(rutInput, {
       tipo: tipoInput,
-      direccion: dirInput,
+      direccion_den: locationValue,
+      direccion_res: dirInput,
       fecha: fechaFormateada,
       estado: "Pendiente",
       nombre: nombreInput,
