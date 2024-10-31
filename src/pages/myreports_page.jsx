@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
-    // Estado para la página de la tabla y filtros
     const [numPag, setnumPag] = useState(1);
     const [filtroTiempo, setFiltroTiempo] = useState('');
     const [filtroEstado, setFiltroEstado] = useState('');
@@ -16,47 +15,33 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
         "21.219.902-8": [
             { tipo: 'Semáforo', direccion: 'Calle 123', fecha: '24-10-2024', estado: 'Pendiente' },
             { tipo: 'Bache', direccion: 'Av. Siempre Viva', fecha: '02-10-2024', estado: 'En progreso' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
-            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' }
         ]
     };
 
-    const denunciasUsuario = muestraDenuncias[userRut];
-    var isRutSinDenuncias = false;
+    const denunciasUsuario = muestraDenuncias[userRut] || [];
+    const isRutSinDenuncias = denunciasUsuario.length === 0;
 
-    if (muestraDenuncias[userRut] === undefined || muestraDenuncias[userRut].length === 0) {
-        isRutSinDenuncias = true
-    }
-
-    // Estado para manejar las denuncias mostradas, inicializado con todas las denuncias
+    // Estado para manejar las denuncias mostradas
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(denunciasUsuario);
 
-    // Función para aplicar el filtro cuando se presiona el botón "Buscar"
+    // Función para aplicar el filtro
     const aplicarFiltro = () => {
         let filtradas = denunciasUsuario;
 
-        // Filtrar por tipo (si se seleccionó un tipo)
         if (filtroTipo) {
             filtradas = filtradas.filter(denuncia => denuncia.tipo === filtroTipo);
         }
 
-        // Filtrar por estado (si se seleccionó un estado)
         if (filtroEstado) {
             filtradas = filtradas.filter(denuncia => denuncia.estado === filtroEstado);
         }
 
-        // Filtrar por tiempo (si se seleccionó un tiempo)
         const hoy = new Date();
         if (filtroTiempo) {
             filtradas = filtradas.filter(denuncia => {
-                // Extraer día, mes y año en el orden correcto
                 const [dia, mes, año] = denuncia.fecha.split('-').map(Number);
-                const fechaDenuncia = new Date(año, mes - 1, dia); // Mes se resta porque en Date, enero es 0
+                const fechaDenuncia = new Date(año, mes - 1, dia);
 
                 if (filtroTiempo === 'hoy') {
                     return fechaDenuncia.toDateString() === hoy.toDateString();
@@ -73,15 +58,12 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
             });
         }
 
-        // Actualizar denuncias filtradas y resetear la paginación
         setDenunciasFiltradas(filtradas);
         setnumPag(1);
     };
 
     const handleClass = (dir) => {
         let retorno = "pagination-buttons__button";
-        console.log(numPag);
-        console.log(Math.ceil(denunciasFiltradas.length / sizePag)+1);
         if (dir === "left" && numPag === 1) {
             retorno += " pagination-buttons__button--bloqueado";
         } else if (dir === "right" && numPag === Math.ceil(denunciasFiltradas.length / sizePag)) {
@@ -107,14 +89,11 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
         <>
             {isLoged ? (
                 isRutSinDenuncias ? 
-                    <div>
-                        Aún no tienes denuncias
-                    </div>
+                    <div>Aún no tienes denuncias</div>
                     :
                     <div className="denuncias-container">
                         <h1>Mis Denuncias</h1>
 
-                        {/* Sección de filtrado */}
                         <div className="filter-section">
                             <span>Filtrar por:</span>
                             <div className="filter-option">
@@ -166,7 +145,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
 
                                 <div className="pagination">
                                     <span>Filas máximas por página: {`${sizePag}`}</span>
-                                    <span>{`${(numPag - 1) * sizePag + 1}-${numPag * sizePag < denunciasFiltradas.length ? numPag * sizePag : denunciasFiltradas.length} de ${denunciasFiltradas.length}`}</span>
+                                    <span>{`${(numPag - 1) * sizePag + 1}-${Math.min(numPag * sizePag, denunciasFiltradas.length)} de ${denunciasFiltradas.length}`}</span>
                                     <div className="pagination-buttons">
                                         <div className={handleClass("left")} onClick={() => numPag > 1 && setnumPag(numPag - 1)}>
                                             <FontAwesomeIcon icon={faChevronLeft} />
