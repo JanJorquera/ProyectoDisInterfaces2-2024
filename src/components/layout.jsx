@@ -28,18 +28,6 @@ const Layout = () => {
       ]
     });
 
-    addElemento(rutInput, {
-      tipo: tipoInput,
-      direccion: dirInput,
-      fecha: fechaFormateada,
-      estado: "Pendiente",
-      nombre: nombreInput,
-      telefono: celInput,
-      email: emailInput,
-      casa: casaInput, 
-      descripcion: descripcionInput,
-      respuesta: "",
-    })
   const location = useLocation();
 
   const addElemento = (rut, objDenuncia) => {
