@@ -12,6 +12,7 @@ export const LoginSignup = ({ setisLoged, setuserRut }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalTitle, setModalTitle] = useState("");
+  const [modalType, setModalType] = useState(1);
 
   const handleRutChange = (event) => setRut(event.target.value);
   const handleEmailChange = (event) => setEmail(event.target.value);
@@ -23,18 +24,18 @@ export const LoginSignup = ({ setisLoged, setuserRut }) => {
     event.preventDefault();
     if (isRegisterPress) {
       setModalTitle("Te has registrado con éxito");
-      setuserRut(rutR); 
+      setuserRut(rutR);
     } else {
       setModalTitle("Sesión iniciada correctamente");
-      setuserRut(rut); 
+      setuserRut(rut);
     }
-    setModalMessage(""); 
-    setModalOpen(true); 
+    setModalMessage("");
+    setModalOpen(true);
+    setModalType(1);
   };
 
   const toggleForm = () => setisRegisterPress(!isRegisterPress);
 
-  
   const handleModalClose = () => {
     setModalOpen(false);
     setisLoged(true);  
@@ -93,7 +94,7 @@ export const LoginSignup = ({ setisLoged, setuserRut }) => {
         message={modalMessage}
         showSuccess={true}
         autoClose={false}  
-        modalType={3}  
+        modalType={1} 
       />
     </div>
   );

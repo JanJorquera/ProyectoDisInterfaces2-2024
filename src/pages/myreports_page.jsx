@@ -27,7 +27,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
     };
 
     // Obtener las denuncias del usuario (usamos directamente los datos simulados)
-    const denunciasUsuario = muestraDenuncias["21.219.902-8"];
+    const denunciasUsuario = muestraDenuncias[userRut];
 
     // Estado para manejar las denuncias mostradas, inicializado con todas las denuncias
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(denunciasUsuario);
