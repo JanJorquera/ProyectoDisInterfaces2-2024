@@ -1,11 +1,11 @@
 // src/pages/Report_Detail.jsx
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import '../stylesheets/report-detail/ReportDetail.scss';
 
 const ReportDetail = () => {
     const location = useLocation();
-    const { denuncia } = location.state || {};
+    const { denuncia, filtros } = location.state || {};
 
     if (!denuncia) {
         return <p>No se encontraron datos de la denuncia.</p>;
@@ -45,6 +45,13 @@ const ReportDetail = () => {
                 <div className="status-box">
                     <strong>Estado:</strong> {denuncia.estado}
                 </div>
+                <Link 
+                    to="/mis-denuncias" 
+                    state={{ filtros }} 
+                    className="btn-return"
+                >
+                    Regresar a Mis Denuncias
+                </Link>
             </div>
         </div>
     );

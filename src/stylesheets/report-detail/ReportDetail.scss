@@ -9,18 +9,19 @@
 
 // Columnas para disposición
 .left-column {
-    flex: 1; // Ocupa espacio igual en la columna izquierda
+    flex: 1;
 }
 
 .center-column {
-    flex: 1; // Ocupa espacio igual en la columna central
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .right-column {
-    flex: 1; // Ocupa espacio igual en la columna derecha
+    flex: 1;
+    position: relative; // Mantiene la referencia para posicionar el botón sin mover los otros elementos
 }
 
 // Estilos generales para las cabeceras de sección
@@ -79,4 +80,33 @@
     text-align: center;
     font-weight: bold;
     width: 100%;
+}
+
+// Estilos para el botón de regreso
+.btn-return {
+    background-color: #62CEC4;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 15px;
+    
+    // Nueva posición
+    position: absolute;
+    bottom: -30px; // Ajusta el valor según sea necesario para separarlo del cuadro de estado
+    right: -20px;
+
+    &:hover {
+        background-color: #4ab1a5;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
 }

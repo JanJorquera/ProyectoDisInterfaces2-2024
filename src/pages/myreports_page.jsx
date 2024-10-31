@@ -3,12 +3,15 @@ import LoginSignup from '../components/loginsignup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestraDenuncias }) => {
     const [numPag, setnumPag] = useState(1);
-    const [filtroTiempo, setFiltroTiempo] = useState('');
-    const [filtroEstado, setFiltroEstado] = useState('');
-    const [filtroTipo, setFiltroTipo] = useState('');
+    const location = useLocation();
+    const filtrosIniciales = location.state?.filtros || {}; // Obtén los filtros desde el state o usa valores vacíos
+    const [filtroTiempo, setFiltroTiempo] = useState(filtrosIniciales.filtroTiempo || '');
+    const [filtroEstado, setFiltroEstado] = useState(filtrosIniciales.filtroEstado || '');
+    const [filtroTipo, setFiltroTipo] = useState(filtrosIniciales.filtroTipo || '');
     const sizePag = 4;
 
     /*
@@ -91,7 +94,8 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
                 <td>
                     <Link 
                         to="/detalle-denuncias" 
-                        state={{ denuncia }} // Pasa los datos de la denuncia aquí
+                        state={{ denuncia,
+                            filtros: { filtroTiempo, filtroEstado, filtroTipo } }} // Pasa los datos de la denuncia aquí
                         className="btn-ver-denuncia"
                     >
                         Ver
