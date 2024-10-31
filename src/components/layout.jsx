@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import NavBar from '../components/nav_bar';
+import UserTypeSelection from '../pages/user_type_selection.jsx';
 import HomePage from '../pages/home_page'
 import LightbulbPage from '../pages/lightbulb_page';
 import MyReportsPage from '../pages/myreports_page.jsx';
@@ -18,7 +19,8 @@ const Layout = () => {
         <NavBar />
         <div className='layout__page'>
           <Routes>
-            <Route path='/' element={<HomePage />} />
+            <Route path='/' element={<UserTypeSelection />} />
+            <Route path='/home' element={<HomePage />} />
             <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut}/>} />
             <Route path='/denunciar' element={<DenunciarPage />} />
             <Route path='/about' element={<AboutPage />} />

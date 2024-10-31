@@ -29,7 +29,7 @@ export const NavBar = () => {
         />
       </h1>
       <nav className='nav-bar__links'>
-        <button className={navLinkClass('/')} onClick={() => navigate('/')}>
+        <button className={navLinkClass('/home')} onClick={() => navigate('/home')}>
           Inicio
         </button>
         <button className={navLinkClass('/about')} onClick={() => navigate('/about')}>
