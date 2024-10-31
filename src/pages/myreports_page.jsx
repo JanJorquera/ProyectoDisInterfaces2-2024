@@ -30,7 +30,7 @@ export const MyReportsPage = ({isLoged, setisLoged, userRut, setuserRut}) =>{
         var retorno = "pagination-buttons__button";
         if (dir === "left" && numPag === 1) {
             retorno = retorno + " pagination-buttons__button--bloqueado";
-        } else if (dir === "right" && numPag === Math.trunc(muestraDenuncias[userRut].length / sizePag)) {
+        } else if (dir === "right" && numPag === Math.trunc(muestraDenuncias[userRut].length / sizePag)+1) {
             retorno = retorno + " pagination-buttons__button--bloqueado";
         }
         return retorno;
