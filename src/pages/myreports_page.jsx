@@ -26,8 +26,12 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
         ]
     };
 
-    // Obtener las denuncias del usuario (usamos directamente los datos simulados)
     const denunciasUsuario = muestraDenuncias[userRut];
+    var isRutSinDenuncias = false;
+
+    if (muestraDenuncias[userRut] === undefined || muestraDenuncias[userRut].length === 0) {
+        isRutSinDenuncias = true
+    }
 
     // Estado para manejar las denuncias mostradas, inicializado con todas las denuncias
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(denunciasUsuario);
@@ -102,74 +106,79 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
     return (
         <>
             {isLoged ? (
-                <div className="denuncias-container">
-                    <h1>Mis Denuncias</h1>
-
-                    {/* Sección de filtrado */}
-                    <div className="filter-section">
-                        <span>Filtrar por:</span>
-                        <div className="filter-option">
-                            <label>Tiempo: </label>
-                            <select value={filtroTiempo} onChange={(e) => setFiltroTiempo(e.target.value)}>
-                                <option value="">Desde Siempre</option>
-                                <option value="hoy">Hoy</option>
-                                <option value="semana">Última semana</option>
-                                <option value="mes">Último mes</option>
-                            </select>
-                        </div>
-                        <div className="filter-option">
-                            <label>Estado: </label>
-                            <select value={filtroEstado} onChange={(e) => setFiltroEstado(e.target.value)}>
-                                <option value="">Todos los estados</option>
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="En progreso">En progreso</option>
-                                <option value="Resuelta">Resuelta</option>
-                            </select>
-                        </div>
-                        <div className="filter-option">
-                            <label>Tipo: </label>
-                            <select value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
-                                <option value="">Todos los tipos</option>
-                                <option value="Semáforo">Semáforo</option>
-                                <option value="Bache">Bache</option>
-                                <option value="Alumbrado">Alumbrado</option>
-                            </select>
-                        </div>
-                        <button className="btn-buscar" onClick={aplicarFiltro}>Buscar</button>
+                isRutSinDenuncias ? 
+                    <div>
+                        Aún no tienes denuncias
                     </div>
+                    :
+                    <div className="denuncias-container">
+                        <h1>Mis Denuncias</h1>
 
-                    {denunciasFiltradas.length === 0 ? (
-                        <div>No hay denuncias para mostrar</div>
-                    ) : (
-                        <>
-                            <table className="denuncias-table">
-                                <thead>
-                                    <tr>
-                                        <th>Tipo de Denuncia</th>
-                                        <th>Dirección</th>
-                                        <th>Fecha</th>
-                                        <th>Estado</th>
-                                        <th>Ir a la denuncia</th>
-                                    </tr>
-                                </thead>
-                                <tbody>{getPagX(numPag, sizePag, denunciasFiltradas)}</tbody>
-                            </table>
+                        {/* Sección de filtrado */}
+                        <div className="filter-section">
+                            <span>Filtrar por:</span>
+                            <div className="filter-option">
+                                <label>Tiempo: </label>
+                                <select value={filtroTiempo} onChange={(e) => setFiltroTiempo(e.target.value)}>
+                                    <option value="">Desde Siempre</option>
+                                    <option value="hoy">Hoy</option>
+                                    <option value="semana">Última semana</option>
+                                    <option value="mes">Último mes</option>
+                                </select>
+                            </div>
+                            <div className="filter-option">
+                                <label>Estado: </label>
+                                <select value={filtroEstado} onChange={(e) => setFiltroEstado(e.target.value)}>
+                                    <option value="">Todos los estados</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                    <option value="En progreso">En progreso</option>
+                                    <option value="Resuelta">Resuelta</option>
+                                </select>
+                            </div>
+                            <div className="filter-option">
+                                <label>Tipo: </label>
+                                <select value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
+                                    <option value="">Todos los tipos</option>
+                                    <option value="Semáforo">Semáforo</option>
+                                    <option value="Bache">Bache</option>
+                                    <option value="Alumbrado">Alumbrado</option>
+                                </select>
+                            </div>
+                            <button className="btn-buscar" onClick={aplicarFiltro}>Buscar</button>
+                        </div>
 
-                            <div className="pagination">
-                                <span>Filas máximas por página: {`${sizePag}`}</span>
-                                <span>{`${(numPag - 1) * sizePag + 1}-${numPag * sizePag < denunciasFiltradas.length ? numPag * sizePag : denunciasFiltradas.length} de ${denunciasFiltradas.length}`}</span>
-                                <div className="pagination-buttons">
-                                    <div className={handleClass("left")} onClick={() => numPag > 1 && setnumPag(numPag - 1)}>
-                                        <FontAwesomeIcon icon={faChevronLeft} />
-                                    </div>
-                                    <div className={handleClass("right")} onClick={() => numPag * sizePag < denunciasFiltradas.length && setnumPag(numPag + 1)}>
-                                        <FontAwesomeIcon icon={faChevronRight} />
+                        {denunciasFiltradas.length === 0 ? (
+                            <div>No hay denuncias para mostrar</div>
+                        ) : (
+                            <>
+                                <table className="denuncias-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo de Denuncia</th>
+                                            <th>Dirección</th>
+                                            <th>Fecha</th>
+                                            <th>Estado</th>
+                                            <th>Ir a la denuncia</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>{getPagX(numPag, sizePag, denunciasFiltradas)}</tbody>
+                                </table>
+
+                                <div className="pagination">
+                                    <span>Filas máximas por página: {`${sizePag}`}</span>
+                                    <span>{`${(numPag - 1) * sizePag + 1}-${numPag * sizePag < denunciasFiltradas.length ? numPag * sizePag : denunciasFiltradas.length} de ${denunciasFiltradas.length}`}</span>
+                                    <div className="pagination-buttons">
+                                        <div className={handleClass("left")} onClick={() => numPag > 1 && setnumPag(numPag - 1)}>
+                                            <FontAwesomeIcon icon={faChevronLeft} />
+                                        </div>
+                                        <div className={handleClass("right")} onClick={() => numPag * sizePag < denunciasFiltradas.length && setnumPag(numPag + 1)}>
+                                            <FontAwesomeIcon icon={faChevronRight} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </>
-                    )}
-                </div>
+                            </>
+                        )}
+                    </div>
             ) : (
                 <LoginSignup setisLoged={setisLoged} setuserRut={setuserRut} />
             )}
