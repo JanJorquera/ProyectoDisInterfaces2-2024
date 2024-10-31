@@ -13,7 +13,18 @@ import Footer from '../components/footer';
 const Layout = () => {
   const [isLoged, setisLoged] = useState(false);
   const [userRut, setuserRut] = useState("");
+  const [muestraDenuncias, setmuestraDenuncias] = useState({});
   const location = useLocation();
+
+  const addElemento = (rut, objDenuncia) => {
+    var aux = muestraDenuncias;
+    if (aux[rut] === undefined) {
+      aux[rut] = [objDenuncia];
+    } else {
+      aux[rut].push(objDenuncia)
+    }
+    setmuestraDenuncias(aux);
+  }
 
   return (
     <div className='layout'>
@@ -22,8 +33,8 @@ const Layout = () => {
         <Routes>
           <Route path='/' element={<UserTypeSelection />} />
           <Route path='/home' element={<HomePage />} />
-          <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut}/>} />
-          <Route path='/denunciar' element={<DenunciarPage />} />
+          <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} muestraDenuncias={muestraDenuncias}/>} />
+          <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento}/>} />
           <Route path='/about' element={<AboutPage />} />
         </Routes>
       </div>

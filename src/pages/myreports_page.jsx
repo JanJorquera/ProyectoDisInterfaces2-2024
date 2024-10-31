@@ -3,15 +3,14 @@ import LoginSignup from '../components/loginsignup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
-    // Estado para la página de la tabla y filtros
+export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestraDenuncias }) => {
     const [numPag, setnumPag] = useState(1);
     const [filtroTiempo, setFiltroTiempo] = useState('');
     const [filtroEstado, setFiltroEstado] = useState('');
     const [filtroTipo, setFiltroTipo] = useState('');
     const sizePag = 4;
 
-    // Datos de ejemplo
+    /*
     const muestraDenuncias = {
         "21.219.902-8": [
             { tipo: 'Semáforo', direccion: 'Calle 123', fecha: '24-10-2024', estado: 'Pendiente' },
@@ -24,21 +23,17 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
             { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
             { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
         ]
-    };
+    };*/
 
-    // Obtener las denuncias del usuario logueado usando su userRut
     const denunciasUsuario = muestraDenuncias[userRut] || [];
     const isRutSinDenuncias = !denunciasUsuario.length;
-
-    // Estado para manejar las denuncias mostradas, inicializado con las denuncias del usuario
     const [denunciasFiltradas, setDenunciasFiltradas] = useState(denunciasUsuario);
 
-    // Actualizar denuncias filtradas cuando cambie userRut o cuando se aplique un filtro
     useEffect(() => {
-        setDenunciasFiltradas(denunciasUsuario);
-    }, [userRut]);
+        aplicarFiltro();
+        setnumPag(1);
+    }, [filtroTiempo, filtroEstado, filtroTipo, userRut]);
 
-    // Función para aplicar el filtro cuando se presiona el botón "Buscar"
     const aplicarFiltro = () => {
         let filtradas = denunciasUsuario;
 
@@ -72,7 +67,6 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
         }
 
         setDenunciasFiltradas(filtradas);
-        setnumPag(1);
     };
 
     const handleClass = (dir) => {
@@ -136,7 +130,6 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut }) => {
                                     <option value="Alumbrado">Alumbrado</option>
                                 </select>
                             </div>
-                            <button className="btn-buscar" onClick={aplicarFiltro}>Buscar</button>
                         </div>
 
                         {denunciasFiltradas.length === 0 ? (

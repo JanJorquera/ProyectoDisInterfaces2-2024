@@ -4,7 +4,7 @@ import '../stylesheets/denunciar-page/denunciar_page.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
-const DenunciarPage = () => {
+const DenunciarPage = ({ addElemento }) => {
   const API_KEY = "pk.398a73e6f152267d6423ca330f9d87e4";
   const [locationValue, setLocationValue] = useState("");
 
@@ -59,6 +59,16 @@ const DenunciarPage = () => {
   const [modalTitle, setModalTitle] = useState("");
   const [modalType, setModalType] = useState(2);
 
+  const [rutInput, setrutInput] = useState("");
+  const [nombreInput, setnombreInput] = useState("");
+  const [celInput, setcelInput] = useState("");
+  const [emailInput, setemailInput] = useState("");
+  const [emailcInput, setemailcInput] = useState("");
+  const [dirInput, setdirInput] = useState("");
+  const [casaInput, setcasaInput] = useState("");
+  const [tipoInput, settipoInput] = useState("Semáforos");
+  const [descripcionInput, setdescripcionInput] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setModalTitle("¿Desea confirmar la denuncia?");
@@ -69,6 +79,28 @@ const DenunciarPage = () => {
   };
 
   const handleConfirm = () => {
+    const fecha = new Date();
+
+    const dia = String(fecha.getDate()).padStart(2, '0'); // Día (2 dígitos)
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Mes (2 dígitos, +1 porque los meses son 0-indexados)
+    const año = fecha.getFullYear(); // Año (4 dígitos)
+
+    const fechaFormateada = `${dia}-${mes}-${año}`;
+    console.log(tipoInput)
+
+    addElemento(rutInput, {
+      tipo: tipoInput,
+      direccion: dirInput,
+      fecha: fechaFormateada,
+      estado: "Pendiente",
+      nombre: nombreInput,
+      telefono: celInput,
+      email: emailInput,
+      casa: casaInput, 
+      descripcion: descripcionInput,
+      respuesta: "",
+    })
+
     setConfirmed(true);
     setModalTitle("Denuncia enviada exitosamente");
     setModalMessage("");
@@ -93,34 +125,34 @@ const DenunciarPage = () => {
               </div>
               <div className="input-group">
                 <label>Rut Vecino</label>
-                <input type="text" required />
+                <input type="text" onChange={(event) => setrutInput(event.target.value)} required />
               </div>
               <div className="input-group">
                 <label>Nombre Vecino</label>
-                <input type="text" required />
+                <input type="text" onChange={(event) => setnombreInput(event.target.value)} required />
               </div>
               <div className="inline-input-group">
                 <div>
                   <label>Teléfono Vecino</label>
-                  <input type="text" required />
+                  <input type="text" onChange={(event) => setcelInput(event.target.value)} required />
                 </div>
                 <div>
                   <label>Correo Electrónico</label>
-                  <input type="email" required />
+                  <input type="email" onChange={(event) => setemailInput(event.target.value)} required />
                 </div>
                 <div>
                   <label>Confirmar Correo</label>
-                  <input type="email" required />
+                  <input type="email" onChange={(event) => setemailcInput(event.target.value)} required />
                 </div>
               </div>
               <div className="inline-input-group">
                 <div>
                   <label>Dirección de residencia</label>
-                  <input type="text" required />
+                  <input type="text" onChange={(event) => setdirInput(event.target.value)} required />
                 </div>
                 <div>
                   <label>Casa/ Depto/ Oficina</label>
-                  <input type="text" required />
+                  <input type="text" onChange={(event) => setcasaInput(event.target.value)} required />
                 </div>
               </div>
             </div>
@@ -131,10 +163,10 @@ const DenunciarPage = () => {
               </div>
               <div className="input-group">
                 <label>Tipo de Denuncia</label>
-                <select required>
-                  <option value="semaforos">Semáforos</option>
-                  <option value="iluminacion">Iluminación</option>
-                  <option value="pavimento">Pavimento</option>
+                <select onChange={(event) => settipoInput(event.target.value)} required>
+                  <option value="Semáforos">Semáforos</option>
+                  <option value="Iluminación">Iluminación</option>
+                  <option value="Pavimento">Pavimento</option>
                 </select>
               </div>
               <div className="input-group">
@@ -152,7 +184,7 @@ const DenunciarPage = () => {
               </div>
               <div className="input-group">
                 <label>Descripción Denuncia</label>
-                <textarea required />
+                <textarea onInput={(event) => setdescripcionInput(event.target.value)} required />
               </div>
               <div className="submit-btn">
                 <button type="submit">Enviar Denuncia</button>
