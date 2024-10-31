@@ -14,7 +14,19 @@ import ReportDetail from '../pages/Report_Detail.jsx'
 const Layout = () => {
   const [isLoged, setisLoged] = useState(false);
   const [userRut, setuserRut] = useState("");
-  const [muestraDenuncias, setmuestraDenuncias] = useState({});
+  const [muestraDenuncias, setmuestraDenuncias] = useState({
+    "21.219.902-8": [
+            { tipo: 'Semáforo', direccion: 'Calle 123', fecha: '24-10-2024', estado: 'Pendiente' },
+            { tipo: 'Bache', direccion: 'Av. Siempre Viva', fecha: '02-10-2024', estado: 'En progreso' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+            { tipo: 'Alumbrado', direccion: 'Calle Falsa 123', fecha: '01-10-2024', estado: 'Resuelta' },
+      ]
+    });
   const location = useLocation();
 
   const addElemento = (rut, objDenuncia) => {
