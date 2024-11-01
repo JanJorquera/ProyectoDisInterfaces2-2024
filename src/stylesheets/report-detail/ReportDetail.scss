@@ -43,6 +43,7 @@
     border-radius: 5px;
     margin-top: 10px;
     color: #333;
+
     p {
         margin: 0;
         padding: 5px 0;
@@ -62,14 +63,18 @@
 
 // Cuadro de respuesta municipal
 .response-box {
-    min-height: 150px;
+    height: 150px; 
     background-color: #ffffff;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 10px;
     width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    resize: none;
+    overflow: auto;
 }
+
 
 // Cuadro de estado de la denuncia
 .status-box {
@@ -80,6 +85,55 @@
     text-align: center;
     font-weight: bold;
     width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Añadir sombra para un efecto de profundidad
+}
+
+// Estilos para el formulario en la sección derecha
+.right-column form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; // Espaciado entre elementos del formulario
+}
+
+// Estilo para el textarea
+textarea {
+    height: 150px; 
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 91%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    resize: none;
+    overflow: auto;
+}
+
+// Estilo para el select
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+// Botón de enviar denuncia
+.submit-btn button {
+    background-color: #62CEC4;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4ab1a5;
+    }
 }
 
 // Estilos para el botón de regreso
