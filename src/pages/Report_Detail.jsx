@@ -4,6 +4,11 @@ import { useLocation, Link } from 'react-router-dom';
 import '../stylesheets/report-detail/ReportDetail.scss';
 
 const ReportDetail = ({ isAdmin, handleModifyReport }) => {
+    const handleReport = (e,rut,id,tipoEstado,respuestaMunicipal)=>{
+        e.preventDefault();
+        handleModifyReport(rut,id,tipoEstado,respuestaMunicipal);
+    }
+
     const [respuestaMunicipal, setrespuestaMunicipal] = useState("");
     const [tipoEstado, settipoEstado] = useState("Pendiente");
     const location = useLocation();
@@ -55,7 +60,7 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
             {/* Sección derecha: Respuesta Municipal y Estado */}
             <div className="right-column">
                 {isAdmin ? 
-                    <form onSubmit={(e) => handleModifyReport(e, denuncia.rut, denuncia.id, tipoEstado, respuestaMunicipal)}>
+                    <form onSubmit={(e) => handleReport(e, denuncia.rut, denuncia.id, tipoEstado, respuestaMunicipal)}>
                         <div className="section-header">Respuesta Municipal</div>
                         <div className="input-group">
                             <textarea onInput={(event) => setrespuestaMunicipal(event.target.value)} required />

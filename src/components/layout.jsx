@@ -34,8 +34,7 @@ const Layout = () => {
 
   const location = useLocation();
 
-  const handleModifyReport = (e,rut,id,estado,respuesta) =>{
-    e.preventDefault();
+  const handleModifyReport = (rut,id,estado,respuesta) =>{
     var aux = muestraDenuncias;
     for (var key in aux[rut]) {
       if (aux[rut][key].id === id) {
