@@ -81,7 +81,7 @@ export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoge
         return arrayAux.map((denuncia, index) => (
             <tr key={index}>
                 <td>{denuncia.tipo}</td>
-                <td>{denuncia.direccion_res}</td>
+                <td>{denuncia.direccion_den}</td>
                 <td>{denuncia.fecha}</td>
                 <td>{denuncia.estado}</td>
                 <td>
