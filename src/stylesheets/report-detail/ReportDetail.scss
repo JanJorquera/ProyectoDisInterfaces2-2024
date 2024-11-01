@@ -1,0 +1,166 @@
+.report-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+// Columnas para disposición
+.left-column {
+    flex: 1;
+}
+
+.center-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-column {
+    flex: 1;
+    position: relative; // Mantiene la referencia para posicionar el botón sin mover los otros elementos
+}
+
+// Estilos generales para las cabeceras de sección
+.section-header {
+    background-color: #62CEC4;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+    text-align: center;
+}
+
+// Contenido de cada sección
+.section-content {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #333;
+
+    p {
+        margin: 0;
+        padding: 5px 0;
+    }
+}
+
+// Cuadro de descripción de la denuncia
+.description-box {
+    min-height: 150px;
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+// Cuadro de respuesta municipal
+.response-box {
+    height: 150px; 
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    resize: none;
+    overflow: auto;
+}
+
+
+// Cuadro de estado de la denuncia
+.status-box {
+    margin-top: 15px;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Añadir sombra para un efecto de profundidad
+}
+
+// Estilos para el formulario en la sección derecha
+.right-column form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; // Espaciado entre elementos del formulario
+}
+
+// Estilo para el textarea
+textarea {
+    height: 150px; 
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 91%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    resize: none;
+    overflow: auto;
+}
+
+// Estilo para el select
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+// Botón de enviar denuncia
+.submit-btn button {
+    background-color: #62CEC4;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4ab1a5;
+    }
+}
+
+// Estilos para el botón de regreso
+.btn-return {
+    background-color: #62CEC4;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-top: 15px;
+    
+    // Nueva posición
+    position: absolute;
+    bottom: -30px; // Ajusta el valor según sea necesario para separarlo del cuadro de estado
+    right: -20px;
+
+    &:hover {
+        background-color: #4ab1a5;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+}
