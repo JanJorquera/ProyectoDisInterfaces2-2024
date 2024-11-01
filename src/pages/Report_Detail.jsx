@@ -70,7 +70,7 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
                     <div className="section-header">Datos Denuncia</div>
                     <div className="section-content">
                         <p><strong>Tipo:</strong> {denuncia.tipo}</p>
-                        <p><strong>Dirección:</strong> {denuncia.direccion_res}</p>
+                        <p><strong>Dirección:</strong> {denuncia.direccion_den}</p>
                         <p><strong>Fecha:</strong> {denuncia.fecha}</p>
                     </div>
                 </div>
@@ -100,7 +100,7 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
                             </select>
 
                             <div className="submit-btn">
-                                <button type="submit">Enviar Denuncia</button>
+                                <button type="submit">Enviar Respuesta</button>
                             </div>
                         </form>
                     : 
