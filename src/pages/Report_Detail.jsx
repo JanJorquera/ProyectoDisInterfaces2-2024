@@ -1,22 +1,44 @@
 // src/pages/Report_Detail.jsx
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import Modal from '../components/modal';
 import '../stylesheets/report-detail/ReportDetail.scss';
 
 const ReportDetail = ({ isAdmin, handleModifyReport }) => {
-    const handleReport = (e,rut,id,tipoEstado,respuestaMunicipal)=>{
-        e.preventDefault();
-        handleModifyReport(rut,id,tipoEstado,respuestaMunicipal);
-    }
-
     const [respuestaMunicipal, setrespuestaMunicipal] = useState("");
     const [tipoEstado, settipoEstado] = useState("Pendiente");
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalType, setModalType] = useState(2);
     const location = useLocation();
     const { denuncia, filtros } = location.state || {};
 
     if (!denuncia) {
         return <p>No se encontraron datos de la denuncia.</p>;
     }
+
+    const handleReport = (e, rut, id, tipoEstado, respuestaMunicipal) => {
+        e.preventDefault();
+        setModalTitle("¿Desea enviar la respuesta municipal?");
+        setModalMessage("Esta acción no se puede deshacer.");
+        setModalOpen(true);
+    };
+
+    const handleConfirm = () => {
+        handleModifyReport(denuncia.rut, denuncia.id, tipoEstado, respuestaMunicipal);
+        setModalTitle("Respuesta a denuncia enviada exitosamente");
+        setModalMessage("");
+        setModalType(1); 
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+        if (modalType === 1) {
+            setrespuestaMunicipal("");
+            settipoEstado("Pendiente");
+        }
+    };
 
     return (
         <div className='main-container'>
@@ -45,22 +67,16 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
                         </>
                         }
                     </div>
-                    {
-                    <>
-                        <div className="section-header">Datos Denuncia</div>
-                        <div className="section-content">
-                            <p><strong>Tipo:</strong> {denuncia.tipo}</p>
-                            <p><strong>Dirección:</strong> {denuncia.direccion_res}</p>
-                            <p><strong>Fecha:</strong> {denuncia.fecha}</p>
-                        </div>
-                    </>
-                    }
-
+                    <div className="section-header">Datos Denuncia</div>
+                    <div className="section-content">
+                        <p><strong>Tipo:</strong> {denuncia.tipo}</p>
+                        <p><strong>Dirección:</strong> {denuncia.direccion_res}</p>
+                        <p><strong>Fecha:</strong> {denuncia.fecha}</p>
+                    </div>
                 </div>
 
                 {/* Sección central: Descripción Denuncia */}
                 <div className="center-column">
-                    
                     <div className="section-header">Descripción Denuncia</div>
                     <div className="section-content description-box">
                         {denuncia.descripcion}
@@ -100,6 +116,19 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
                     }
                 </div>
             </div>
+
+            {isModalOpen && (
+                <Modal
+                    isOpen={isModalOpen}
+                    toggleModal={handleCloseModal}
+                    onConfirm={handleConfirm}
+                    messageTitle={modalTitle}
+                    message={modalMessage}
+                    showSuccess={modalType === 1}
+                    autoClose={false}
+                    modalType={modalType}
+                />
+            )}
         </div>
     );
 };
