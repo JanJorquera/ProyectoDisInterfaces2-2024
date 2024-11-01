@@ -4,7 +4,7 @@ import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons
 import { Link } from 'react-router-dom';
 import LoginSignup from '../components/loginsignup';
 
-export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoged, setuserRut, isAdmin }) => {
+export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoged, setuserRut }) => {
 
     const flatDenuncia = () => {
         var arrayDenuncias = [];

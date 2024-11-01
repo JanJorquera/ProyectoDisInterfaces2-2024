@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const DenunciarPage = ({ addElemento }) => {
+  var idContador = 10;
   const API_KEY = "pk.398a73e6f152267d6423ca330f9d87e4";
   const [locationValue, setLocationValue] = useState("");
 
@@ -89,6 +90,7 @@ const DenunciarPage = ({ addElemento }) => {
     console.log(tipoInput)
 
     addElemento(rutInput, {
+      id: idContador,
       tipo: tipoInput,
       direccion_den: locationValue,
       direccion_res: dirInput,
@@ -102,6 +104,7 @@ const DenunciarPage = ({ addElemento }) => {
       respuesta: "",
     })
 
+    idContador++;
     setConfirmed(true);
     setModalTitle("Denuncia enviada exitosamente");
     setModalMessage("");

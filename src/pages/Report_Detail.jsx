@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import '../stylesheets/report-detail/ReportDetail.scss';
 
-const ReportDetail = ({ isAdmin }) => {
+const ReportDetail = ({ isAdmin, handleModifyReport }) => {
+    const [respuestaMunicipal, setrespuestaMunicipal] = useState("");
     const [tipoEstado, settipoEstado] = useState("Pendiente");
     const location = useLocation();
     const { denuncia, filtros } = location.state || {};
@@ -54,7 +55,7 @@ const ReportDetail = ({ isAdmin }) => {
             {/* Sección derecha: Respuesta Municipal y Estado */}
             <div className="right-column">
                 {isAdmin ? 
-                    <form>
+                    <form onSubmit={(e) => handleModifyReport(e, denuncia.rut, denuncia.id, tipoEstado, respuestaMunicipal)}>
                         <div className="section-header">Respuesta Municipal</div>
                         <div className="input-group">
                             <textarea onInput={(event) => setrespuestaMunicipal(event.target.value)} required />
