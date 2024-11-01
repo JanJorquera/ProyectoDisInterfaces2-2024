@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -17,9 +18,11 @@ export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoge
     }
 
     const [numPag, setnumPag] = useState(1);
-    const [filtroTiempo, setFiltroTiempo] = useState('');
-    const [filtroEstado, setFiltroEstado] = useState('');
-    const [filtroTipo, setFiltroTipo] = useState('');
+    const location = useLocation();
+    const filtrosIniciales = location.state?.filtros || {};
+    const [filtroTiempo, setFiltroTiempo] = useState(filtrosIniciales.filtroTiempo || '');
+    const [filtroEstado, setFiltroEstado] = useState(filtrosIniciales.filtroEstado || '');
+    const [filtroTipo, setFiltroTipo] = useState(filtrosIniciales.filtroTipo || '');
     const sizePag = 4;
 
     // Convertir todas las denuncias en un solo array
@@ -87,7 +90,7 @@ export const AdminReportsPage = ({ muestraDenuncias, userRut, isLoged, setisLoge
                 <td>
                     <Link 
                         to="/detalle-denuncias" 
-                        state={{ denuncia }} 
+                        state={{ denuncia, filtros: { filtroTiempo, filtroEstado, filtroTipo } }} 
                         className="btn-ver-denuncia"
                     >
                         Ver

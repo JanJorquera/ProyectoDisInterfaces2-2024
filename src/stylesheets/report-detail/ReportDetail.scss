@@ -14,14 +14,10 @@
 
 .center-column {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .right-column {
     flex: 1;
-    position: relative; // Mantiene la referencia para posicionar el botón sin mover los otros elementos
 }
 
 // Estilos generales para las cabeceras de sección
@@ -33,6 +29,7 @@
     color: black;
     margin-top: 20px;
     text-align: center;
+    
 }
 
 // Contenido de cada sección
@@ -58,7 +55,6 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 10px;
-    width: 100%;
 }
 
 // Cuadro de respuesta municipal
@@ -95,6 +91,16 @@
     gap: 15px; // Espaciado entre elementos del formulario
 }
 
+.main-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container__left{
+    margin-left: 7vw;
+    justify-self: left;
+}
+
 // Estilo para el textarea
 textarea {
     height: 150px; 
@@ -103,7 +109,7 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 10px;
-    width: 91%;
+    width: 25vw;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     resize: none;
     overflow: auto;
@@ -121,24 +127,30 @@ select {
 }
 
 // Botón de enviar denuncia
-.submit-btn button {
-    background-color: #62CEC4;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
 
-    &:hover {
-        background-color: #4ab1a5;
+.submit-btn {
+    margin-left: auto;
+
+    button {
+        background-color: #18F0C9;
+        color: black;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        text-decoration: underline;
+    
+        &:hover {
+            background-color: #4ab1a5;
+        }
     }
 }
 
 // Estilos para el botón de regreso
 .btn-return {
-    background-color: #62CEC4;
+    background-color: #18F0C9;
     color: black;
     border: none;
     padding: 10px 15px;
@@ -150,11 +162,6 @@ select {
     display: inline-block;
     margin-top: 15px;
     
-    // Nueva posición
-    position: absolute;
-    bottom: -30px; // Ajusta el valor según sea necesario para separarlo del cuadro de estado
-    right: -20px;
-
     &:hover {
         background-color: #4ab1a5;
     }
