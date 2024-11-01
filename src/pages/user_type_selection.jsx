@@ -19,7 +19,7 @@ const UserTypeSelection = ({ setisAdmin }) => {
     <div className="user-type-selection">
       <h1>Selecciona tu tipo de usuario</h1>
       <button onClick={handleDenuncianteClick}>Soy Denunciante</button>
-      <button onClick={handleAdminClick}>Soy Administrador</button>
+      <button onClick={handleAdminClick}>Soy Funcionario</button>
     </div>
   );
 };
