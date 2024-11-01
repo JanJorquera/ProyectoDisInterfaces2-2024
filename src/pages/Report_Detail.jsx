@@ -94,8 +94,8 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
                             
                             <div className="section-header">Estado</div>
                             <select onChange={(event) => settipoEstado(event.target.value)} required>
-                                <option value="Sin revisar">Sin revisar</option>
-                                <option value="En curso">En curso</option>
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="En progreso">En progreso</option>
                                 <option value="Solucionada">Solucionada</option>
                             </select>
 
