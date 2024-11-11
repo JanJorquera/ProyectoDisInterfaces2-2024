@@ -119,3 +119,30 @@
   border: 2px solid #62CEC4;
   font-weight: bold;
 }
+
+/* Estilos específicos para el botón de geolocalización */
+.location-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 8px 10px;
+  margin-left: 8px; /* Margen para separarlo del campo de texto */
+  margin-top: -9px; /* Ajuste para subir ligeramente el botón */
+  border: 2px solid #62CEC4; /* Color de borde */
+  border-radius: 5px;
+  background-color: #007bff; /* Fondo del botón */
+  color: #fff; /* Color del icono */
+  font-size: 1.2em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Efecto de agrandado */
+  }
+
+  &:active {
+    background-color: #004494; /* Color al hacer clic */
+    transform: scale(0.95); /* Efecto de clic */
+  }
+}

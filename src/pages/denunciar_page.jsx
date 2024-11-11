@@ -171,19 +171,26 @@ const DenunciarPage = ({ addElemento }) => {
                   <option value="Semáforos">Semáforos</option>
                   <option value="Iluminación">Iluminación</option>
                   <option value="Pavimento">Pavimento</option>
+                  <option value="Basura">Basura</option>
+                  <option value="Vandalismo">Vandalismo</option>
+                  <option value="Plagas">Plagas</option>
+                  <option value="Falta de Señaléticas de Tránsito">Falta de Señaléticas de Tránsito</option>
+
                 </select>
               </div>
               <div className="input-group">
                 <label>Dirección Denuncia</label>
-                <div>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <input
                     type="text"
                     onChange={(event) => setLocationValue(event.target.value)}
                     value={locationValue}
                   />
-                  <div>
-                    <FontAwesomeIcon icon={faLocationDot} onClick={handleLocationClick} />
-                  </div>
+                  <FontAwesomeIcon 
+                    icon={faLocationDot} 
+                    onClick={handleLocationClick} 
+                    className="location-button" 
+                  />
                 </div>
               </div>
               <div className="input-group">
