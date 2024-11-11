@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate} from 'react-router-dom';
 
 import NavBar from '../components/nav_bar';
 import UserTypeSelection from '../pages/user_type_selection.jsx';
@@ -33,6 +33,10 @@ const Layout = () => {
 
 
   const location = useLocation();
+
+  if (location.pathname === '/') {
+    return <Navigate to="/home" />;
+  }
 
   const handleModifyReport = (rut,id,estado,respuesta) =>{
     var aux = muestraDenuncias;

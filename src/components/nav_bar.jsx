@@ -58,10 +58,6 @@ export const NavBar = ({ isLoged, isAdmin, setisLoged, setuserRut }) => {
           </button>
         </>
         }
-        
-        <button className={navLinkClass('/')} onClick={handleChangeUser}>
-          Cambiar usuario
-        </button>
       </nav>
     </header>
   );
