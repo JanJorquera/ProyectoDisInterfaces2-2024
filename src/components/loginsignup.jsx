@@ -1,6 +1,8 @@
 // LoginSignup.js
 import React, { useState } from "react";
 import Modal from '../components/modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 export const LoginSignup = ({ setisLoged, setuserRut, isAdmin }) => {
   const [rut, setRut] = useState("");
@@ -8,10 +10,14 @@ export const LoginSignup = ({ setisLoged, setuserRut, isAdmin }) => {
   const [password, setPassword] = useState("");
   const [rutR, setRutR] = useState("");
   const [passwordR, setPasswordR] = useState("");
+  const [passwordC, setPasswordC] = useState("");
   const [isRegisterPress, setisRegisterPress] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalTitle, setModalTitle] = useState("");
+  const [isBtnShowPasswordLoginPress, setisBtnShowPasswordLoginPress] = useState(false);
+  const [isBtnShowPasswordConfirmRegisterPress, setisBtnShowPasswordConfirmRegisterPress] = useState(false);
+  const [isBtnShowPasswordRegisterPress, setisBtnShowPasswordRegisterPress] = useState(false);
   const [modalType, setModalType] = useState(1);
 
   const handleRutChange = (event) => setRut(event.target.value);
@@ -19,6 +25,7 @@ export const LoginSignup = ({ setisLoged, setuserRut, isAdmin }) => {
   const handlePasswordChange = (event) => setPassword(event.target.value);
   const handleRutRChange = (event) => setRutR(event.target.value);
   const handlePasswordRChange = (event) => setPasswordR(event.target.value);
+  const handlePasswordCChange = (event) => setPasswordC(event.target.value);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -67,15 +74,55 @@ export const LoginSignup = ({ setisLoged, setuserRut, isAdmin }) => {
             </div>
           )}
           
-          <div className='loginsignup__field'>
-            <label>Contraseña:</label>
-            <input
-              type="password"
-              value={isRegisterPress ? passwordR : password}
-              onChange={(event) => isRegisterPress ? handlePasswordRChange(event) : handlePasswordChange(event)}
-              required
-            />
+          <div className='loginsignup__field-container'>
+            <div className='loginsignup__field'>
+              <label>Contraseña:</label>
+              <input
+                type={isRegisterPress ? (!isBtnShowPasswordRegisterPress ? "password":"text") : (!isBtnShowPasswordLoginPress ? "password":"text")}
+                value={isRegisterPress ? passwordR : password}
+                onChange={(event) => isRegisterPress ? handlePasswordRChange(event) : handlePasswordChange(event)}
+                required
+              />
+            </div>
+            <div className='button btn-showeye' onClick={() => isRegisterPress ? setisBtnShowPasswordRegisterPress(!isBtnShowPasswordRegisterPress) : setisBtnShowPasswordLoginPress(!isBtnShowPasswordLoginPress)}>
+              {isRegisterPress ? 
+                (!isBtnShowPasswordRegisterPress ? 
+                  <FontAwesomeIcon icon={faEye} className="btn-showeye__font"/>
+                :
+                  <FontAwesomeIcon icon={faEyeSlash} className="btn-showeye__font"/>
+                )
+              : 
+                (!isBtnShowPasswordLoginPress ? 
+                  <FontAwesomeIcon icon={faEye} className="btn-showeye__font"/>
+                :
+                  <FontAwesomeIcon icon={faEyeSlash} className="btn-showeye__font"/>
+                )
+              }
+            </div>
           </div>
+
+          {isRegisterPress && (
+            <div className='loginsignup__field-container'>
+              <div className='loginsignup__field'>
+                <label>Confirmar contraseña:</label>
+                <input
+                  type={!isBtnShowPasswordConfirmRegisterPress ? "password":"text"}
+                  value={passwordC}
+                  onChange={(event) => handlePasswordCChange(event)}
+                  required
+                />
+              </div>
+              <div className='button btn-showeye' onClick={()=>setisBtnShowPasswordConfirmRegisterPress(!isBtnShowPasswordConfirmRegisterPress)}>
+                {
+                !isBtnShowPasswordConfirmRegisterPress ? 
+                  <FontAwesomeIcon icon={faEye} className="btn-showeye__font"/>
+                :
+                  <FontAwesomeIcon icon={faEyeSlash} className="btn-showeye__font"/>
+                }
+              </div>
+            </div>
+          )}
+          
           
           <button className='button' type="submit">{isRegisterPress ? "Registrarse" : "Iniciar Sesión"}</button>
         </form>
