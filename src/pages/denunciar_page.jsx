@@ -180,15 +180,17 @@ const DenunciarPage = ({ addElemento }) => {
               </div>
               <div className="input-group">
                 <label>Dirección Denuncia</label>
-                <div>
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <input
                     type="text"
                     onChange={(event) => setLocationValue(event.target.value)}
                     value={locationValue}
                   />
-                  <div>
-                    <FontAwesomeIcon icon={faLocationDot} onClick={handleLocationClick} />
-                  </div>
+                  <FontAwesomeIcon 
+                    icon={faLocationDot} 
+                    onClick={handleLocationClick} 
+                    className="location-button" 
+                  />
                 </div>
               </div>
               <div className="input-group">
