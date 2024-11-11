@@ -171,6 +171,11 @@ const DenunciarPage = ({ addElemento }) => {
                   <option value="Semáforos">Semáforos</option>
                   <option value="Iluminación">Iluminación</option>
                   <option value="Pavimento">Pavimento</option>
+                  <option value="Basura">Basura</option>
+                  <option value="Vandalismo">Vandalismo</option>
+                  <option value="Plagas">Plagas</option>
+                  <option value="Falta de Señaléticas de Tránsito">Falta de Señaléticas de Tránsito</option>
+
                 </select>
               </div>
               <div className="input-group">
