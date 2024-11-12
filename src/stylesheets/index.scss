@@ -20,6 +20,10 @@ html, body {
   font-family: 'Open Sans', sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .button {
   display: flex;
   margin-right: 15px;
