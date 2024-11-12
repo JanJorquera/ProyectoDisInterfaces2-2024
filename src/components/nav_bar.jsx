@@ -56,6 +56,11 @@ export const NavBar = ({ isLoged, isAdmin, setisLoged, setuserRut }) => {
           <button className={navLinkClass('/denunciar')} onClick={() => navigate('/denunciar')}>
             Denunciar
           </button>
+          {isLoged && 
+            <button className='nav-bar__button' onClick={()=>logOut()}>
+              Cerrar sesión
+            </button>
+          }
         </>
         }
       </nav>
