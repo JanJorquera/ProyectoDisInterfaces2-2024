@@ -69,7 +69,7 @@ const Layout = () => {
           <Route path='/' element={<UserTypeSelection setisAdmin={setisAdmin} userRut={userRut}/>} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/mis-denuncias' element={<MyReportsPage isLoged={isLoged} setisLoged={setisLoged} userRut={userRut} setuserRut={setuserRut} muestraDenuncias={muestraDenuncias}/>} />
-          <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento}/>} />
+          <Route path='/denunciar' element={<DenunciarPage addElemento={addElemento} setuserRut={setuserRut}/>} />
           <Route path='/about' element={<AboutPage />} />
           <Route path='/detalle-denuncias' element={<ReportDetail isAdmin={isAdmin} handleModifyReport={handleModifyReport} />}/>
           <Route path='/admin' element={<AdminReportsPage muestraDenuncias={muestraDenuncias} userRut={userRut} isLoged={isLoged} setisLoged={setisLoged} setuserRut={setuserRut} />} />

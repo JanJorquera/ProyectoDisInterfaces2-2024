@@ -92,7 +92,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
 
     return (
         <>
-            {isLoged ? (
+            {
                 isRutSinDenuncias ? (
                     <div className="no-reports-message">
                         <p>Aún no tienes denuncias</p>
@@ -173,9 +173,7 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
                         )}
                     </div>
                 )
-            ) : (
-                <LoginSignup setisLoged={setisLoged} setuserRut={setuserRut} isAdmin={false}/>
-            )}
+            }
         </>
     );
 };
