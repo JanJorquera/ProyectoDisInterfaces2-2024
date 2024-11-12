@@ -126,8 +126,14 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
                                 <select value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
                                     <option value="">Todos los tipos</option>
                                     <option value="Semáforo">Semáforo</option>
-                                    <option value="Bache">Bache</option>
+                                    <option value="Pavimento">Pavimento</option>
                                     <option value="Alumbrado">Alumbrado</option>
+                                    <option value="Basura">Basura</option>
+                                    <option value="Vandalismo">Vandalismo</option>
+                                    <option value="Plagas">Plagas</option>
+                                    <option value="Falta de Señaléticas de Tránsito">Falta de Señaléticas de Tránsito</option>
+                                    <option value="Árbol Caído">Árbol Caído</option>
+
                                 </select>
                             </div>
                         </div>
