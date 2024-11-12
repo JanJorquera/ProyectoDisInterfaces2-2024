@@ -175,6 +175,7 @@ const DenunciarPage = ({ addElemento }) => {
                   <option value="Vandalismo">Vandalismo</option>
                   <option value="Plagas">Plagas</option>
                   <option value="Falta de Señaléticas de Tránsito">Falta de Señaléticas de Tránsito</option>
+                  <option value="Árbol Caído">Árbol Caído</option>
 
                 </select>
               </div>
