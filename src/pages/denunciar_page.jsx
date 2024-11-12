@@ -156,7 +156,7 @@ const DenunciarPage = ({ addElemento }) => {
                 </div>
                 <div>
                   <label>Casa/ Depto/ Oficina</label>
-                  <input type="text" onChange={(event) => setcasaInput(event.target.value)} required />
+                  <input type="text" onChange={(event) => setcasaInput(event.target.value)}  />
                 </div>
               </div>
             </div>
