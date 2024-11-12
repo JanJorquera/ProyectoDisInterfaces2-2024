@@ -94,7 +94,9 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
         <>
             {isLoged ? (
                 isRutSinDenuncias ? (
-                    <div>Aún no tienes denuncias</div>
+                    <div className="no-reports-message">
+                        <p>Aún no tienes denuncias</p>
+                    </div>
                 ) : (
                     <div className="denuncias-container">
                         <h1>Mis Denuncias</h1>
@@ -131,7 +133,9 @@ export const MyReportsPage = ({ isLoged, setisLoged, userRut, setuserRut, muestr
                         </div>
 
                         {denunciasFiltradas.length === 0 ? (
-                            <div>No hay denuncias para mostrar</div>
+                            <div className="no-reports-message">
+                                <p>No hay denuncias para mostrar</p>
+                            </div>
                         ) : (
                             <>
                                 <table className="denuncias-table">

@@ -156,3 +156,25 @@
     }
   }
 }
+
+.no-reports-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 400px;
+  background-color: #62CEC4; /* Color más claro */
+  color: black;
+  font-size: 18px;
+  border-radius: 5px; /* Borde más sutil */
+  
+  p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+
+
