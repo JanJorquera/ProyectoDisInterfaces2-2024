@@ -14,10 +14,14 @@
 
 .center-column {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .right-column {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 // Estilos generales para las cabeceras de sección
@@ -50,6 +54,7 @@
 // Cuadro de descripción de la denuncia
 .description-box {
     min-height: 150px;
+    flex-grow: 1;
     background-color: #ffffff;
     padding: 15px;
     border: 1px solid #ddd;
@@ -73,6 +78,7 @@
 
 
 // Cuadro de estado de la denuncia
+/*
 .status-box {
     margin-top: 15px;
     background-color: #e0e0e0;
@@ -80,8 +86,17 @@
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
-    width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Añadir sombra para un efecto de profundidad
+}*/
+
+.status-box {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 3px;
+    background-color: #2E8B87;
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 // Estilos para el formulario en la sección derecha
@@ -91,14 +106,20 @@
     gap: 15px; // Espaciado entre elementos del formulario
 }
 
-.main-container{
+.main-container {
+    margin: 10px auto; /* Centra horizontalmente y mantiene el margen superior */
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
 }
 
 .main-container__left{
-    margin-left: 7vw;
+    display: flex;
     justify-self: left;
+}
+
+.main-container__right{
+    margin-left: auto;
 }
 
 // Estilo para el textarea

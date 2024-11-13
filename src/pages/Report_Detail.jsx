@@ -43,13 +43,9 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
     return (
         <div className='main-container'>
             <div className='main-container__left'>
-                <Link 
-                    to={isAdmin ? "/admin" : "/mis-denuncias"}
-                    state={{ filtros }} 
-                    className="btn-return"
-                >
-                    {isAdmin ? "Regresar a Denuncias" : "Regresar a Mis Denuncias"}
-                </Link>
+                <div className="status-box">
+                    <strong>Estado:</strong> {denuncia.estado}
+                </div>
             </div>
             <div className="report-detail-container">
                 {/* Sección izquierda: Datos Vecino y Datos Denuncia */}
@@ -106,17 +102,23 @@ const ReportDetail = ({ isAdmin, handleModifyReport }) => {
                     : 
                     <>
                         <div className="section-header">Respuesta Municipal</div>
-                        <div className="section-content response-box">
+                        <div className="section-content description-box">
                             {denuncia.respuesta}
-                        </div>
-                        <div className="status-box">
-                            <strong>Estado:</strong> {denuncia.estado}
                         </div>
                     </>
                     }
                 </div>
             </div>
-
+            <div className='main-container__right'>
+                <Link 
+                    to={isAdmin ? "/admin" : "/mis-denuncias"}
+                    state={{ filtros }} 
+                    className="btn-return"
+                >
+                    {isAdmin ? "Regresar a Denuncias" : "Regresar a Mis Denuncias"}
+                </Link>
+            </div>
+            
             {isModalOpen && (
                 <Modal
                     isOpen={isModalOpen}
