@@ -71,15 +71,16 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
   const [descripcionInput, setdescripcionInput] = useState("");
 
   const formatRUT = (value) => {
-    const cleanedValue = value.replace(/\D/g, '');
+    const cleanedValue = value.replace(/[^0-9kK]/g, '');
   
     if (cleanedValue.length <= 1) return cleanedValue;
   
     const body = cleanedValue.slice(0, -1);
-    const verifier = cleanedValue.slice(-1);
+    const verifier = cleanedValue.slice(-1).toUpperCase();
     const formattedBody = body.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     return `${formattedBody}-${verifier}`;
   };
+  
 
   const handleRutChange = (event) => {
     const formattedRut = formatRUT(event.target.value);
