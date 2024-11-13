@@ -70,6 +70,22 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
   const [tipoInput, settipoInput] = useState("Semáforos");
   const [descripcionInput, setdescripcionInput] = useState("");
 
+  const formatRUT = (value) => {
+    const cleanedValue = value.replace(/\D/g, '');
+  
+    if (cleanedValue.length <= 1) return cleanedValue;
+  
+    const body = cleanedValue.slice(0, -1);
+    const verifier = cleanedValue.slice(-1);
+    const formattedBody = body.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return `${formattedBody}-${verifier}`;
+  };
+
+  const handleRutChange = (event) => {
+    const formattedRut = formatRUT(event.target.value);
+    setrutInput(formattedRut);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setModalTitle("¿Desea confirmar la denuncia?");
@@ -130,7 +146,12 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
               </div>
               <div className="input-group">
                 <label>Rut Vecino</label>
-                <input type="text" onChange={(event) => setrutInput(event.target.value)} required />
+                <input
+                  type="text"
+                  value={rutInput}
+                  onChange={handleRutChange}
+                  required
+                />
               </div>
               <div className="input-group">
                 <label>Nombre Vecino</label>
