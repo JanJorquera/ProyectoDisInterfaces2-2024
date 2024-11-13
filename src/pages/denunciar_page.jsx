@@ -66,8 +66,8 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
   const [emailInput, setemailInput] = useState("");
   const [emailcInput, setemailcInput] = useState("");
   const [dirInput, setdirInput] = useState("");
-  const [casaInput, setcasaInput] = useState("");
-  const [tipoInput, settipoInput] = useState("Semáforos");
+  const [casaInput, setcasaInput] = useState("Casa");
+  const [tipoInput, settipoInput] = useState("Árbol caído");
   const [descripcionInput, setdescripcionInput] = useState("");
 
   const formatRUT = (value) => {
@@ -146,7 +146,7 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
                 <h2 className="section-title">Datos Vecino</h2>
               </div>
               <div className="input-group">
-                <label>Rut Vecino</label>
+                <label>Rut Vecino<span className="obligatorio">*</span></label>
                 <input
                   type="text"
                   value={rutInput}
@@ -155,31 +155,35 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
                 />
               </div>
               <div className="input-group">
-                <label>Nombre Vecino</label>
+                <label>Nombre Vecino<span className="obligatorio">*</span></label>
                 <input type="text" onChange={(event) => setnombreInput(event.target.value)} required />
               </div>
               <div className="inline-input-group">
                 <div>
-                  <label>Teléfono Vecino</label>
+                  <label>Teléfono Vecino<span className="obligatorio">*</span></label>
                   <input type="text" onChange={(event) => setcelInput(event.target.value)} required />
                 </div>
                 <div>
-                  <label>Correo Electrónico</label>
+                  <label>Correo Electrónico<span className="obligatorio">*</span></label>
                   <input type="email" onChange={(event) => setemailInput(event.target.value)} required />
                 </div>
                 <div>
-                  <label>Confirmar Correo</label>
+                  <label>Confirmar Correo<span className="obligatorio">*</span></label>
                   <input type="email" onChange={(event) => setemailcInput(event.target.value)} required />
                 </div>
               </div>
               <div className="inline-input-group">
                 <div>
-                  <label>Dirección de residencia</label>
+                  <label>Dirección de Residencia<span className="obligatorio">*</span></label>
                   <input type="text" onChange={(event) => setdirInput(event.target.value)} required />
                 </div>
                 <div>
                   <label>Casa/ Depto/ Oficina</label>
-                  <input type="text" onChange={(event) => setcasaInput(event.target.value)}  />
+                  <select className="select-casa"onChange={(event) => setcasaInput(event.target.value)} required>
+                    <option value="Casa">Casa</option>
+                    <option value="Depto">Depto</option>
+                    <option value="Oficina">Oficina</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -189,21 +193,20 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
                 <h2 className="section-title">Datos Denuncia</h2>
               </div>
               <div className="input-group">
-                <label>Tipo de Denuncia</label>
+                <label>Tipo de Denuncia<span className="obligatorio">*</span></label>
                 <select onChange={(event) => settipoInput(event.target.value)} required>
-                  <option value="Semáforos">Semáforos</option>
+                  <option value="Árbol Caído">Árbol Caído</option>
+                  <option value="Basura">Basura</option>
+                  <option value="Falta de Señaléticas de Tránsito">Falta de Señaléticas de Tránsito</option>
                   <option value="Iluminación">Iluminación</option>
                   <option value="Pavimento">Pavimento</option>
-                  <option value="Basura">Basura</option>
-                  <option value="Vandalismo">Vandalismo</option>
                   <option value="Plagas">Plagas</option>
-                  <option value="Falta de Señaléticas de Tránsito">Falta de Señaléticas de Tránsito</option>
-                  <option value="Árbol Caído">Árbol Caído</option>
-
+                  <option value="Semáforos">Semáforos</option>
+                  <option value="Vandalismo">Vandalismo</option>
                 </select>
               </div>
               <div className="input-group">
-                <label>Dirección Denuncia</label>
+                <label>Dirección Denuncia<span className="obligatorio">*</span></label>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <input
                     type="text"
@@ -219,7 +222,7 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
               </div>
               <div className="input-group">
                 <label>Descripción Denuncia</label>
-                <textarea onInput={(event) => setdescripcionInput(event.target.value)} required />
+                <textarea onInput={(event) => setdescripcionInput(event.target.value)}/>
               </div>
               <div className="submit-btn">
                 <button type="submit">Enviar Denuncia</button>
@@ -227,8 +230,10 @@ const DenunciarPage = ({ addElemento, setuserRut }) => {
             </div>
           </div>
         </form>
+        <div className='nota-obligatorio'>
+          (*) Campo obligatorio
+        </div>
       </div>
-
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
